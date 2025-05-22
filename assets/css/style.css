@@ -1,0 +1,250 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding-top: 150px;
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #222c36;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    margin: 0;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 60px;
+}
+
+nav li {
+    margin-left: 30px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.2s;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+nav a:hover,
+nav a:focus {
+    background: #e8491d;
+    color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 100px auto 40px auto;
+    /* top margin for sticky nav */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    padding: 40px 30px 30px 30px;
+}
+
+footer {
+    background: #35424a;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+h1,
+h2 {
+    color: #222c36;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 0.3em;
+}
+
+h2 {
+    font-size: 1.4em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid #e8491d;
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+ul {
+    padding-left: 1.2em;
+}
+
+a {
+    color: #e8491d;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.project {
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border-left: 4px solid #e8491d;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+
+body.dark-mode {
+    background-color: #181a1b;
+    color: #e0e0e0;
+}
+
+body.dark-mode nav {
+    background: #23272f;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+body.dark-mode .container {
+    background: #23272f;
+    color: #e0e0e0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: #fff;
+    border-bottom-color: #e8491d;
+}
+
+body.dark-mode a {
+    color: #ffb37b;
+}
+
+body.dark-mode .about-content p {
+    color: #e0e0e0;
+}
+
+body.dark-mode .project {
+    background: #353942;
+    border-left: 4px solid #ffb37b;
+    color: #e0e0e0;
+}
+
+/* Mouse spotlight effect for dark mode */
+#spotlight-cursor {
+    display: none;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 60%, rgba(255, 255, 255, 0) 100%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
+    opacity: 0.7;
+}
+
+body.dark-mode #spotlight-cursor {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 98%;
+        padding: 15px 5px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    nav li {
+        margin: 10px 0 0 0;
+    }
+}
+
+.about-profile-wrapper {
+    position: relative;
+    margin-top: 30px;
+}
+
+.about-profile-img {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border: 5px solid #fff;
+    background: #fff;
+    z-index: 2;
+}
+
+.about-content {
+    padding-top: 80px;
+    text-align: center;
+}
+
+.about-content p {
+    text-align: justify;
+}
+
+.about-profile-wrapper {
+    position: relative;
+    margin-top: 30px;
+}
+
+.about-profile-img {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border: 5px solid #fff;
+    background: #fff;
+    z-index: 2;
+}
+
+.about-content {
+    padding-top: 80px;
+    text-align: center;
+}
+
+.about-content p {
+    text-align: justify;
+}
