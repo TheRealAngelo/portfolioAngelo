@@ -155,14 +155,13 @@ body.dark-mode .project {
     color: #e0e0e0;
 }
 
-/* Mouse spotlight effect for dark mode */
 #spotlight-cursor {
     display: none;
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    width: 180px;
-    height: 180px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 60%, rgba(255, 255, 255, 0) 100%);
     transform: translate(-50%, -50%);
