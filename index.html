@@ -16,7 +16,6 @@
         </li>
         <div style="display: flex; align-items: center;">
           <li><a href="#">About</a></li>
-          <li><a href="#resume">Resume</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><button id="toggle-mode" style="padding:6px 14px; border:none; border-radius:4px; background:#e8491d; color:#fff; cursor:pointer; margin-left:16px; margin-right:40px;">🌙</button></li>
         </div>
@@ -37,105 +36,70 @@
     <!-- Resume Section -->
     <div class="container" id="resume">
         <h1>Angelo Montojo Morales</h1>
-        <p>Coca-cola village, Matina, Davao City, 8000<br>
-        morales.angelo2000@gmail.com | +63 998 752 3614 | <a href="https://github.com/TheRealAngelo" target="_blank">github.com/TheRealAngelo</a></p>
-        
-        <section id="objective">
-            <h2>Objective</h2>
-            <p>Motivated college student with a strong passion for programming and database management. Seeking opportunities to gain experience and apply technical skills in software development, database handling, and tech problem-solving within real-world scenarios.</p>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-            <ul>
-                <li>
-                    <strong>Bachelor of Science in Computer Science</strong><br>
-                    University of Mindanao – Davao City
-                </li>
-            </ul>
-        </section>
-
-        <section id="certifications">
-            <h2>Certificates</h2>
-            <ul>
-                <li>IT Specialist – Database, Certiport, 2024</li>
-                <li>IT Specialist – HTML & CSS, Certiport, 2024</li>
-                <li>IT Specialist – Network Security, Certiport, 2025</li>
-            </ul>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li><strong>Shoppcie</strong> – Ordering system for a computer shop with inventory, cart, and checkout functionality.</li>
-                <li><strong>CrowDataBase</strong> – Ordering system for a local burger shop; manages customer orders and staff interactions.</li>
-                <li><strong>Grade View Portal</strong> – Portal for students to view grades and profile info; includes role-based access for teachers and admins.</li>
-                <li><strong>Commission Tracker</strong> – Tracks agent commissions based on card sales; includes reporting and user management.</li>
-                <li><strong>Chicken Rover</strong> – Arduino robot that mimics random chicken movement using RNG-based logic and obstacle detection.</li>
-            </ul>
-        </section>
-
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <ul>
-                <li>Programming languages: Python, Java, JavaScript, C++, Dart, SQL</li>
-                <li>Web Development: HTML, CSS, PHP</li>
-                <li>Databases: MySQL, Firebase, PostgreSQL</li>
-                <li>Tools: Git, Visual Studio, Eclipse, Flutter, Figma, Docker</li>
-                <li>Frameworks: Laravel, Tailwind CSS</li>
-            </ul>
-        </section>
-
-        <section id="soft-skills">
-            <h2>Soft Skills</h2>
-            <ul>
-                <li>Efficient and goal-driven</li>
-                <li>Verbal and written communication</li>
-                <li>Team-oriented and collaborative</li>
-                <li>Adaptable and fast learner</li>
-            </ul>
-        </section>
+        <p>
+           🏠 Coca-cola village, Matina, Davao City, 8000<br>
+           🔗 morales.angelo2000@gmail.com | 📱 +63 998 752 3614  
+        </p>
+        <p class="resume-actions">
+            <button id="toggle-resume-view" class="resume-toggle-btn" aria-expanded="false" aria-controls="resume-pdf-viewer">
+                ▼ Show Resume (PDF)
+            </button>
+            <a href="assets/files/AngeloMorales_Resume.pdf" target="_blank" class="resume-btn">
+                📄 Download Resume (PDF)
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=morales.angelo2000@gmail.com" target="_blank" class="resume-btn">
+                📝 Create Offer (Email)
+            </a>
+        </p>
+        <div class="resume-pdf-viewer" id="resume-pdf-viewer" style="display:none;">
+            <iframe src="assets/files/AngeloMorales_Resume.pdf" width="100%" height="600px" style="border:none;"></iframe>
+        </div>
     </div>
 
     <!-- Projects Section -->
     <div class="container" id="projects">
         <h1>My Projects</h1>
-        <div class="project">
-            <h2>Grade View Portal</h2>
-            <p>Grade View Portal For San Vicente Academy</p>
-            <p>languages: HTML, CSS, JavaScript, MySQL</p>
-            <a href="https://github.com/TheRealAngelo/GradeViewPortal" target="_blank">View on GitHub</a>
+        <div class="projects-list">
+            <div class="project">
+                <h2>Grade View Portal</h2>
+                <p>Grade View Portal For San Vicente Academy</p>
+                <p>languages: HTML, CSS, JavaScript, MySQL</p>
+                <a href="https://github.com/TheRealAngelo/GradeViewPortal" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project">
+                <h2>Commission Tracker System</h2>
+                <p>Commission Tracking System for EZD marketing</p>
+                <p>Technologies used: Laravel PHP, Tailwind CSS, MySQL, JavaSrcipt</p>
+                <a href="https://github.com/TheRealAngelo/commission_tracker_system" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project">
+                <h2>Chicken Rover</h2>
+                <p>Arduino Project</p>
+                <p>Technologies used: C++, Arduino</p>
+                <a href="https://github.com/TheRealAngelo/ChickenRover" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project">
+                <h2>Shoppcie</h2>
+                <p>Web Dev Project</p>
+                <p>Technologies used: CSS, HTML, PHP, JavaSrcipt, MySQL</p>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">Maintenance</a>
+            </div>
+            <div class="project">
+                <h2>CrowDataBase</h2>
+                <p>Kiosk Ordering System for burger Joint</p>
+                <p>Technologies used:</p>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">Maintenance</a>
+            </div>
         </div>
-        <div class="project">
-            <h2>Commission Tracker System</h2>
-            <p>Commission Tracking System for EZD marketing</p>
-            <p>Technologies used: Laravel PHP, Tailwind CSS, MySQL, JavaSrcipt</p>
-            <a href="https://github.com/TheRealAngelo/commission_tracker_system" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h2>Chicken Rover</h2>
-            <p>Arduino Project</p>
-            <p>Technologies used: C++, Arduino</p>
-            <a href="https://github.com/TheRealAngelo/ChickenRover" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h2>Shoppcie</h2>
-            <p>Web Dev Project</p>
-            <p>Technologies used: CSS, HTML, PHP, JavaSrcipt, MySQL</p>
-            <a href="https://github.com/TheRealAngelo/" target="_blank">Maintenance</a>
-        </div>
-        <div class="project">
-            <h2>CrowDataBase</h2>
-            <p>Kiosk Ordering System for burger Joint</p>
-            <p>Technologies used:</p>
-            <a href="https://github.com/TheRealAngelo/" target="_blank">Maintenance</a>
-        </div>
-         <h1>On Going Projects</h1>
-         <div class="project">
-            <h2>School Information System</h2>
-            <p>Full School Information system</p>
-            <p>languages: Laravel PHP, Tailwind CSS, MySQL</p>
-            <a href="https://github.com/TheRealAngelo/" target="_blank">Still Private</a>
+        <h1>On Going Projects</h1>
+        <div class="projects-list">
+            <div class="project">
+                <h2>School Information System</h2>
+                <p>Full School Information system</p>
+                <p>languages: Laravel PHP, Tailwind CSS, MySQL</p>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">Still Private</a>
+            </div>
+            <!-- Add here-->
         </div>
     </div>
 
@@ -160,6 +124,43 @@
             }
         });
     </script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggle-resume-view');
+    const pdfViewer = document.getElementById('resume-pdf-viewer');
+    let isVisible = false;
+    if (toggleBtn && pdfViewer) {
+        toggleBtn.addEventListener('click', function() {
+            isVisible = !isVisible;
+            pdfViewer.style.display = isVisible ? 'block' : 'none';
+            toggleBtn.textContent = isVisible ? '▲ Hide Resume' : '▼ Show Resume';
+            toggleBtn.setAttribute('aria-expanded', isVisible);
+        });
+    }
+});
+</script>
+
+    <footer class="footer-main">
+        <div class="footer-links">
+            <a href="https://www.facebook.com/angelo.m.morales.9" target="_blank" class="footer-link">
+                <img src="assets/pictures/facebook-icon.png" alt="Facebook" class="footer-icon">Facebook
+            </a>
+            <a href="https://www.instagram.com/itstinybilly" target="_blank" class="footer-link">
+                <img src="assets/pictures/instagram-icon.png" alt="Instagram" class="footer-icon">Instagram
+            </a>
+            <a href="https://github.com/TheRealAngelo" target="_blank" class="footer-link">
+                <img src="assets/pictures/github-icon.png" alt="GitHub" class="footer-icon">GitHub
+            </a>
+            <a href="https://steamcommunity.com/id/Billzebubz/" target="_blank" class="footer-link">
+                <img src="assets/pictures/steam-icon.png" alt="Steam" class="footer-icon">Steam
+            </a>
+        
+        
+        
+        </div>
+        <div class="footer-copy">&copy; 2025 Angelo Morales. All rights reserved.</div>
+    </footer>
 </body>
 </html>
 

@@ -55,14 +55,17 @@ nav a:focus {
 }
 
 .container {
-    width: 90%;
     max-width: 900px;
-    margin: 100px auto 40px auto;
-    /* top margin for sticky nav */
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-    padding: 40px 30px 30px 30px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    margin-bottom: 40px; /* This is likely causing the large space */
+}
+
+/* Reduce the space between sections */
+.container {
+    margin-bottom: 20px; /* Reduce from 40px to 20px */
+    padding-top: 16px;   /* Optional: reduce top padding */
+    padding-bottom: 16px;/* Optional: reduce bottom padding */
 }
 
 footer {
@@ -188,6 +191,154 @@ body.dark-mode #spotlight-cursor {
     nav li {
         margin: 10px 0 0 0;
     }
+}
+
+/* Projects vertical scroll styling */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;      /* Adjust height as needed to fit 2 projects */
+    overflow-y: auto;
+    gap: 24px;
+    padding-bottom: 12px;
+}
+.project {
+    background: #f9f9f9;
+    color: #222;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+body.dark-mode .project {
+    background: #353942;
+    color: #e0e0e0;
+}
+@media (max-width: 900px) {
+    .project {
+        min-width: 80vw;
+        max-width: 90vw;
+    }
+}
+
+/* Resume button styling */
+.resume-btn,
+.resume-toggle-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    min-width: 210px;           /* Fixed width for both buttons */
+    background: #e8491d;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: inherit;
+    font-weight: 500;
+    vertical-align: middle;
+    margin-right: 12px; /* Add spacing between buttons */
+    transition: background 0.2s;
+    text-align: center;
+}
+.resume-btn:hover,
+.resume-toggle-btn:hover {
+    background: #c63c13;
+}
+
+body.dark-mode .resume-btn,
+body.dark-mode .resume-toggle-btn {
+    background: #ffb37b;
+    color: #232323;
+}
+body.dark-mode .resume-btn:hover,
+body.dark-mode .resume-toggle-btn:hover {
+    background: #e8491d;
+    color: #fff;
+}
+
+.resume-actions {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 12px;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.resume-actions .resume-btn,
+.resume-actions .resume-toggle-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-size: 1em;
+}
+
+@media (max-width: 700px) {
+    .resume-actions {
+        flex-direction: column;
+    }
+    .resume-actions .resume-btn,
+    .resume-actions .resume-toggle-btn {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .resume-actions .resume-btn:last-child,
+    .resume-actions .resume-toggle-btn:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Footer styling */
+.footer-main {
+    background: #222;
+    color: #fff;
+    padding: 24px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+.footer-link {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    margin: 0;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 6px 18px; /* Increased horizontal padding for more space */
+    border-radius: 4px;
+    transition: background 0.2s;
+    white-space: nowrap;
+    min-width: 120px;   /* Optional: ensures each link has a minimum width */
+}
+.footer-link:hover {
+    background: #e8491d;
+    text-decoration: none;
+}
+.footer-icon {
+    height: 24px;
+    aspect-ratio: 1/1;      /* Maintain square aspect ratio */
+    vertical-align: middle;
+    margin-right: 14px;
+    flex-shrink: 0;
+    object-fit: contain;    /* Prevent stretching */
+}
+.footer-copy {
+    font-size: 0.95em;
 }
 
 .about-profile-wrapper {
