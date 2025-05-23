@@ -55,17 +55,19 @@ nav a:focus {
 }
 
 .container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(34,44,54,0.06);
     max-width: 900px;
     margin: 0 auto;
     padding: 24px 20px;
-    margin-bottom: 40px; /* This is likely causing the large space */
+    margin-bottom: 20px;
 }
 
-/* Reduce the space between sections */
 .container {
-    margin-bottom: 20px; /* Reduce from 40px to 20px */
-    padding-top: 16px;   /* Optional: reduce top padding */
-    padding-bottom: 16px;/* Optional: reduce bottom padding */
+    margin-bottom: 20px; 
+    padding-top: 16px;  
+    padding-bottom: 16px;
 }
 
 footer {
@@ -136,6 +138,7 @@ body.dark-mode nav {
 body.dark-mode .container {
     background: #23272f;
     color: #e0e0e0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
 }
 
 body.dark-mode h1,
@@ -197,7 +200,7 @@ body.dark-mode #spotlight-cursor {
 .projects-list {
     display: flex;
     flex-direction: column;
-    max-height: 500px;      /* Adjust height as needed to fit 2 projects */
+    max-height: 480px;      
     overflow-y: auto;
     gap: 24px;
     padding-bottom: 12px;
@@ -226,7 +229,7 @@ body.dark-mode .project {
 .resume-toggle-btn {
     display: inline-block;
     padding: 10px 20px;
-    min-width: 210px;           /* Fixed width for both buttons */
+    min-width: 210px;           
     background: #e8491d;
     color: #fff;
     border-radius: 4px;
@@ -237,7 +240,7 @@ body.dark-mode .project {
     font-family: inherit;
     font-weight: 500;
     vertical-align: middle;
-    margin-right: 12px; /* Add spacing between buttons */
+    margin-right: 12px; 
     transition: background 0.2s;
     text-align: center;
 }
@@ -319,11 +322,11 @@ body.dark-mode .resume-toggle-btn:hover {
     margin: 0;
     text-decoration: none;
     font-size: 1.1em;
-    padding: 6px 18px; /* Increased horizontal padding for more space */
+    padding: 6px 18px; 
     border-radius: 4px;
     transition: background 0.2s;
     white-space: nowrap;
-    min-width: 120px;   /* Optional: ensures each link has a minimum width */
+    min-width: 120px;   
 }
 .footer-link:hover {
     background: #e8491d;
@@ -331,11 +334,11 @@ body.dark-mode .resume-toggle-btn:hover {
 }
 .footer-icon {
     height: 24px;
-    aspect-ratio: 1/1;      /* Maintain square aspect ratio */
+    aspect-ratio: 1/1;      
     vertical-align: middle;
     margin-right: 14px;
     flex-shrink: 0;
-    object-fit: contain;    /* Prevent stretching */
+    object-fit: contain;   
 }
 .footer-copy {
     font-size: 0.95em;
@@ -397,4 +400,99 @@ body.dark-mode .resume-toggle-btn:hover {
 
 .about-content p {
     text-align: justify;
+}
+
+/* Navbar styles */
+.main-nav-ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0 24px;
+    list-style: none;
+    height: 60px;
+    background: #222c36;
+}
+
+.nav-logo-title {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+}
+
+.nav-logo {
+    height: 38px;
+    margin-right: 10px;
+    border-radius: 6px;
+}
+
+.nav-title {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    background: none;
+    border: none;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    background: #e8491d;
+    color: #fff;
+}
+
+.nav-toggle-mode {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
+    background: #e8491d;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 16px;
+    margin-right: 0;
+    font-size: 1.2em;
+    transition: background 0.2s;
+}
+
+.nav-toggle-mode:hover {
+    background: #c63c13;
+}
+
+/* Responsive navbar */
+@media (max-width: 700px) {
+    .main-nav-ul {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        padding: 0 8px;
+    }
+    .nav-logo-title {
+        margin-right: 0;
+        justify-content: center;
+    }
+    .nav-links {
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 8px;
+    }
+    .nav-title {
+        font-size: 1em;
+    }
 }
