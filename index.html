@@ -42,13 +42,13 @@
         </p>
         <p class="resume-actions">
             <button id="toggle-resume-view" class="resume-toggle-btn" aria-expanded="false" aria-controls="resume-pdf-viewer">
-                ▼ Show Resume (PDF)
+                ▼ Show Resume
             </button>
             <a href="assets/files/AngeloMorales_Resume.pdf" target="_blank" class="resume-btn">
-                📄 Download Resume (PDF)
+                📄 Download Resume 
             </a>
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=morales.angelo2000@gmail.com" target="_blank" class="resume-btn">
-                📝 Create Offer (Email)
+                📝 Email Me
             </a>
         </p>
         <div class="resume-pdf-viewer" id="resume-pdf-viewer" style="display:none;">
@@ -62,33 +62,76 @@
         <div class="projects-list">
             <div class="project">
                 <h2>Grade View Portal</h2>
-                <p>Grade View Portal For San Vicente Academy</p>
+                <p>Grade View Portal For San Vicente Academy a school project</p>
                 <p>languages: HTML, CSS, JavaScript, MySQL</p>
                 <a href="https://github.com/TheRealAngelo/GradeViewPortal" target="_blank">View on GitHub</a>
+                <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="gradeview-gallery">
+                    ▼ System Samples
+                </button>
+                <div class="project-gallery" id="gradeview-gallery" style="display:none;">
+                    <img src="assets/pictures/GradeViewSystem/GradeViewLogin.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                    <img src="assets/pictures/GradeViewSystem/GradeViewStudDashBoard.png" alt="Grade View Portal Screenshot 2" class="project-image">
+                    <img src="assets/pictures/GradeViewSystem/GradeViewStudViewGrades.png" alt="Grade View Portal Screenshot 3" class="project-image">
+                    <img src="assets/pictures/GradeViewSystem/GradeViewFacDashBoard.png" alt="Grade View Portal Screenshot 4" class="project-image">
+                    <img src="assets/pictures/GradeViewSystem/GradeViewFacEditGrades.png" alt="Grade View Portal Screenshot 5" class="project-image">
+                </div>
             </div>
             <div class="project">
                 <h2>Commission Tracker System</h2>
-                <p>Commission Tracking System for EZD marketing</p>
+                <p>Commission Tracking System for EZD marketing a school project</p>
                 <p>Technologies used: Laravel PHP, Tailwind CSS, MySQL, JavaSrcipt</p>
                 <a href="https://github.com/TheRealAngelo/commission_tracker_system" target="_blank">View on GitHub</a>
+                <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="commission-gallery">
+                    ▼ System Samples
+                </button>
+                <div class="project-gallery" id="commission-gallery" style="display:none;">
+                    <img src="assets/pictures/Commission/CommissionLogin.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionDashboard.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionManageCommission.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionTotalCommission.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionManageUsers.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionManageAgents.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                </div>
             </div>
             <div class="project">
                 <h2>Chicken Rover</h2>
                 <p>Arduino Project</p>
                 <p>Technologies used: C++, Arduino</p>
                 <a href="https://github.com/TheRealAngelo/ChickenRover" target="_blank">View on GitHub</a>
+                <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="robotics-gallery">
+                    ▼ System Samples
+                </button>
+                <div class="project-gallery" id="robotics-gallery" style="display:none;">
+                    <!--Insert PICTURES-->
+                    <p>⚠️ Under Maintenance</p>
+                </div>
             </div>
             <div class="project">
                 <h2>Shoppcie</h2>
                 <p>Web Dev Project</p>
                 <p>Technologies used: CSS, HTML, PHP, JavaSrcipt, MySQL</p>
                 <a href="https://github.com/TheRealAngelo/" target="_blank">Maintenance</a>
+                <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="ecommerce-gallery">
+                    ▼ System Samples
+                </button>
+                <div class="project-gallery" id="ecommerce-gallery" style="display:none;">
+                    <!--Insert PICTURES-->
+                    <p>⚠️ Under Maintenance</p>
+                </div>
             </div>
             <div class="project">
                 <h2>CrowDataBase</h2>
                 <p>Kiosk Ordering System for burger Joint</p>
                 <p>Technologies used:</p>
                 <a href="https://github.com/TheRealAngelo/" target="_blank">Maintenance</a>
+                <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="burgerjoint-gallery">
+                    ▼ System Samples
+                </button>
+                <div class="project-gallery" id="burgerjoint-gallery" style="display:none;">
+                    <img src="assets/pictures/BurgerJoint/BurgerJoint.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                    <img src="assets/pictures/BurgerJoint/BurgerJointMenu.png" alt="Grade View Portal Screenshot 2" class="project-image">
+                    <img src="assets/pictures/BurgerJoint/BurgerJointOrder.png" alt="Grade View Portal Screenshot 3" class="project-image">
+                    </div>
             </div>
         </div>
         <h1>On Going Projects</h1>
@@ -99,17 +142,15 @@
                 <p>languages: Laravel PHP, Tailwind CSS, MySQL</p>
                 <a href="https://github.com/TheRealAngelo/" target="_blank">Still Private</a>
             </div>
-            <!-- Add here-->
         </div>
     </div>
-
     <div id="spotlight-cursor"></div>
     <script src="assets/js/script.js"></script>
     <script>
         function updateProfileImg() {
             const img = document.getElementById('profile-img');
             if (document.body.classList.contains('dark-mode')) {
-                img.src = 'assets/pictures/Profile.png';
+                img.src = 'assets/pictures/Profiledark.png';
             } else {
                 img.src = 'assets/pictures/Profilelight.png';
             }
@@ -124,9 +165,18 @@
             }
         });
     </script>
-
     <script>
 document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.toggle-gallery-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const galleryId = btn.getAttribute('aria-controls');
+            const gallery = document.getElementById(galleryId);
+            const isVisible = gallery.style.display === 'flex';
+            gallery.style.display = isVisible ? 'none' : 'flex';
+            btn.textContent = isVisible ? '▼ System Samples' : '▲ System Samples';
+            btn.setAttribute('aria-expanded', !isVisible);
+        });
+    });
     const toggleBtn = document.getElementById('toggle-resume-view');
     const pdfViewer = document.getElementById('resume-pdf-viewer');
     let isVisible = false;
@@ -155,9 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="https://steamcommunity.com/id/Billzebubz/" target="_blank" class="footer-link">
                 <img src="assets/pictures/steam-icon.png" alt="Steam" class="footer-icon">Steam
             </a>
-        
-        
-        
         </div>
         <div class="footer-copy">&copy; 2025 Angelo Morales. All rights reserved.</div>
     </footer>
