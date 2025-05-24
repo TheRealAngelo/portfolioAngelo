@@ -14,16 +14,24 @@
           <img src="assets/pictures/logo.png" alt="Logo" style="height:38px; margin-right:10px; border-radius:6px;">
           <span style="color: #fff; font-size: 1.2em; font-weight: bold;">Angelo Morales</span>
         </li>
-        <div style="display: flex; align-items: center;">
-          <li><a href="#">Home</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#certificate">Certificates</a></li>
-          <li><a href="#projects">Projects</a></li>
-        <label class="switch" style="margin-left:16px; margin-right:40px;">
-          <input type="checkbox" id="toggle-mode">
-          <span class="slider"></span>
-        </label>
-        </div>
+        <li class="nav-right" style="display: flex; align-items: center;">
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="nav-links-wrapper" id="nav-links-wrapper">
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#resume">Resume</a></li>
+              <li><a href="#certificate">Certificates</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <label class="switch" style="margin-left:16px; margin-right:40px;">
+            <input type="checkbox" id="toggle-mode">
+            <span class="slider"></span>
+          </label>
+        </li>
       </ul>
     </nav>
 
@@ -219,6 +227,31 @@
             }
         });
     </script>
+    <script>
+let lastScrollY = window.scrollY;
+let ticking = false;
+function handleNavScroll() {
+    const nav = document.querySelector('nav');
+    if (window.innerWidth > 700) {
+        nav.classList.remove('hide-on-scroll');
+        return;
+    }
+    if (window.scrollY > lastScrollY && window.scrollY > 80) {
+        nav.classList.add('hide-on-scroll');
+    } else {
+        nav.classList.remove('hide-on-scroll');
+    }
+    lastScrollY = window.scrollY;
+    ticking = false;
+}
+window.addEventListener('scroll', function() {
+    if (!ticking) {
+        window.requestAnimationFrame(handleNavScroll);
+        ticking = true;
+    }
+});
+window.addEventListener('resize', handleNavScroll);
+</script>
 
     <footer class="footer-main">
         <div class="footer-links">
@@ -240,6 +273,8 @@
             <a href="tel:+639123456789" class="footer-link">
                 <img src="assets/pictures/phone-icon.svg" alt="Phone" class="footer-icon">
             </a>
+        </div>
+        <div id="contact">
         </div>
         <div class="footer-copy">
             <p>&copy; 2025 Angelo Morales. All rights reserved.</p>
