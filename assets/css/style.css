@@ -336,7 +336,7 @@ body.dark-mode .resume-toggle-btn:hover {
 
 @media (max-width: 700px) {
     .resume-actions {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .resume-actions .resume-btn,
     .resume-actions .resume-toggle-btn {
