@@ -27,6 +27,26 @@ document.addEventListener('DOMContentLoaded', function() {
         if (body.classList.contains('dark-mode')) {
             spotlight.style.left = e.clientX + 'px';
             spotlight.style.top = e.clientY + 'px';
+            spotlight.style.opacity = 0.7;
         }
     });
+    document.addEventListener('mouseleave', function() {
+        spotlight.style.opacity = 0;
+    });
+    document.addEventListener('mouseenter', function() {
+        if (body.classList.contains('dark-mode')) {
+            spotlight.style.opacity = 0.7;
+        }
+    });
+    const pdfIframe = document.querySelector('#resume-pdf-viewer iframe');
+    if (pdfIframe) {
+        pdfIframe.addEventListener('mouseenter', function() {
+            spotlight.style.opacity = 0;
+        });
+        pdfIframe.addEventListener('mouseleave', function() {
+            if (body.classList.contains('dark-mode')) {
+                spotlight.style.opacity = 0.7;
+            }
+        });
+    }
 });
