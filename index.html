@@ -17,7 +17,10 @@
         <div style="display: flex; align-items: center;">
           <li><a href="#">About</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><button id="toggle-mode" style="padding:6px 14px; border:none; border-radius:4px; background:#e8491d; color:#fff; cursor:pointer; margin-left:16px; margin-right:40px;">🌙</button></li> <!-- DONT TOUCH -->
+        <label class="switch" style="margin-left:16px; margin-right:40px;">
+          <input type="checkbox" id="toggle-mode">
+          <span class="slider"></span>
+        </label>
         </div>
       </ul>
     </nav>
@@ -28,7 +31,7 @@
         <div class="about-content">
             <h1>About Me</h1>
             <p>
-                I'm Angelo Montojo Morales a Computer Science student from the University of Mindanao with a passion for software development, databases, and building practical tech solutions. Outside of coding, I enjoy pc building, cycling, motor touring, cooking, playing video games, and going for a swim or freedive when I can. I'm always eager to learn, collaborate, and take on real-world challenges.
+                I'm Angelo Montojo Morales, a Computer Science student from the University of Mindanao with a passion for software development, databases, and building practical tech solutions. Outside of coding, I enjoy PC building, cycling, motor touring, cooking, playing video games, and going for a swim or freedive when I can. I'm always eager to learn, collaborate, and take on real-world challenges.
             </p>
         </div>
     </div>
@@ -37,8 +40,8 @@
     <div class="container" id="resume">
         <h1>Angelo Montojo Morales</h1>
         <p>
-           🏠 Coca-cola village, Matina, Davao City, 8000<br>
-           🔗 morales.angelo2000@gmail.com | 📱 +63 998 752 3614  
+            🏠 Coca-cola village, Matina, Davao City, 8000<br>
+            🔗 morales.angelo2000@gmail.com | 📱 +63 998 752 3614  
         </p>
         <p class="resume-actions">
             <button id="toggle-resume-view" class="resume-toggle-btn" aria-expanded="false" aria-controls="resume-pdf-viewer">
@@ -51,7 +54,7 @@
                 📝 Email Me
             </a>
         </p>
-        <div class="resume-pdf-viewer" id="resume-pdf-viewer" style="display:none;">
+        <div class="resume-pdf-viewer" id="resume-pdf-viewer">
             <iframe src="assets/files/AngeloMorales_Resume.pdf" width="100%" height="600px" style="border:none;"></iframe>
         </div>
     </div>
@@ -63,12 +66,18 @@
             <div class="project">
                 <h2>Grade View Portal</h2>
                 <p>Grade View Portal For San Vicente Academy a school project</p>
-                <p>Technologies used: HTML, CSS, JavaScript, MySQL</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">CSS</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">MySQL</span>
+                </div>
                 <a href="https://github.com/TheRealAngelo/GradeViewPortal" target="_blank">[GitHub]</a>
                 <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="gradeview-gallery">
                     ▼ Samples
                 </button>
-                <div class="project-gallery" id="gradeview-gallery" style="display:none;">
+                <div class="project-gallery" id="gradeview-gallery">
                     <img src="assets/pictures/GradeViewSystem/GradeViewLogin.png" alt="Grade View Portal Screenshot 1" class="project-image">
                     <img src="assets/pictures/GradeViewSystem/GradeViewStudDashBoard.png" alt="Grade View Portal Screenshot 2" class="project-image">
                     <img src="assets/pictures/GradeViewSystem/GradeViewStudViewGrades.png" alt="Grade View Portal Screenshot 3" class="project-image">
@@ -79,42 +88,56 @@
             <div class="project">
                 <h2>Commission Tracker System</h2>
                 <p>Commission Tracking System for EZD marketing a school project</p>
-                <p>Technologies used: Laravel PHP, Tailwind CSS, MySQL, JavaSrcipt</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Laravel PHP</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                    <span class="tech-badge">MySQL</span>
+                    <span class="tech-badge">JavaSrcipt</span>
+                </div>
                 <a href="https://github.com/TheRealAngelo/commission_tracker_system" target="_blank">[GitHub]</a>
                 <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="commission-gallery">
                     ▼ Samples
                 </button>
-                <div class="project-gallery" id="commission-gallery" style="display:none;">
-                    <img src="assets/pictures/Commission/CommissionLogin.png" alt="Grade View Portal Screenshot 1" class="project-image">
-                    <img src="assets/pictures/Commission/CommissionDashboard.png" alt="Grade View Portal Screenshot 1" class="project-image">
-                    <img src="assets/pictures/Commission/CommissionManageCommission.png" alt="Grade View Portal Screenshot 1" class="project-image">
-                    <img src="assets/pictures/Commission/CommissionTotalCommission.png" alt="Grade View Portal Screenshot 1" class="project-image">
-                    <img src="assets/pictures/Commission/CommissionManageUsers.png" alt="Grade View Portal Screenshot 1" class="project-image">
-                    <img src="assets/pictures/Commission/CommissionManageAgents.png" alt="Grade View Portal Screenshot 1" class="project-image">
+                <div class="project-gallery" id="commission-gallery">
+                    <img src="assets/pictures/Commission/CommissionLogin.png" alt="Commission Tracker Screenshot 1" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionDashboard.png" alt="Commission Tracker Screenshot 2" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionManageCommission.png" alt="Commission Tracker Screenshot 3" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionTotalCommission.png" alt="Commission Tracker Screenshot 4" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionManageUsers.png" alt="Commission Tracker Screenshot 5" class="project-image">
+                    <img src="assets/pictures/Commission/CommissionManageAgents.png" alt="Commission Tracker Screenshot 6" class="project-image">
                 </div>
             </div>
             <div class="project">
                 <h2>Chicken Rover</h2>
-                <p>Arduino Project</p>
-                <p>Technologies used: C++, Arduino</p>
+                <p>Two Wheeled Robot for Arduino Project</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">C++</span>
+                    <span class="tech-badge">Arduino</span>
+                </div>
                 <a href="https://github.com/TheRealAngelo/ChickenRover" target="_blank">[GitHub]</a>
                 <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="robotics-gallery">
                     ▼ Samples
                 </button>
-                <div class="project-gallery" id="robotics-gallery" style="display:none;">
+                <div class="project-gallery" id="robotics-gallery">
                     <!--Insert PICTURES-->
                     <p>⚠️ Under Maintenance</p>
                 </div>
             </div>
             <div class="project">
                 <h2>Shoppcie</h2>
-                <p>Web Dev Project</p>
-                <p>Technologies used: CSS, HTML, PHP, JavaSrcipt, MySQL</p>
-                <a href="https://github.com/TheRealAngelo/" target="_blank">Maintenance</a>
+                <p>Ecommerce Web development Project</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">CSS</span>
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">JavaSrcipt</span>
+                    <span class="tech-badge">MySQL</span>
+                </div>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">[GitHub]</a>
                 <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="ecommerce-gallery">
                     ▼ Samples
                 </button>
-                <div class="project-gallery" id="ecommerce-gallery" style="display:none;">
+                <div class="project-gallery" id="ecommerce-gallery">
                     <!--Insert PICTURES-->
                     <p>⚠️ Under Maintenance</p>
                 </div>
@@ -122,16 +145,21 @@
             <div class="project">
                 <h2>CrowDataBase</h2>
                 <p>Kiosk Ordering System for burger Joint</p>
-                <p>Technologies used:</p>
-                <a href="https://github.com/TheRealAngelo/" target="_blank">Maintenance</a>
+                <div class="tech-stack">
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">MySQL</span>
+                    <span class="tech-badge">JavaSrcipt</span>
+                </div>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">[GitHub]</a>
                 <button class="toggle-gallery-btn" aria-expanded="false" aria-controls="burgerjoint-gallery">
                     ▼ Samples
                 </button>
-                <div class="project-gallery" id="burgerjoint-gallery" style="display:none;">
-                    <img src="assets/pictures/BurgerJoint/BurgerJoint.png" alt="Grade View Portal Screenshot 1" class="project-image">
-                    <img src="assets/pictures/BurgerJoint/BurgerJointMenu.png" alt="Grade View Portal Screenshot 2" class="project-image">
-                    <img src="assets/pictures/BurgerJoint/BurgerJointOrder.png" alt="Grade View Portal Screenshot 3" class="project-image">
-                    </div>
+                <div class="project-gallery" id="burgerjoint-gallery">
+                    <img src="assets/pictures/BurgerJoint/BurgerJoint.png" alt="Burger Joint Screenshot 1" class="project-image">
+                    <img src="assets/pictures/BurgerJoint/BurgerJointMenu.png" alt="Burger Joint Screenshot 2" class="project-image">
+                    <img src="assets/pictures/BurgerJoint/BurgerJointOrder.png" alt="Burger Joint Screenshot 3" class="project-image">
+                </div>
             </div>
         </div>
         <h1>On Going Projects</h1>
@@ -140,11 +168,18 @@
                 <h2>School Information System</h2>
                 <p>Full School Information system</p>
                 <p>languages: Laravel PHP, Tailwind CSS, MySQL</p>
-                <a href="https://github.com/TheRealAngelo/" target="_blank">On Progress</a>
+                <div class="tech-stack">
+                    <span class="tech-badge">Laravel PHP</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                    <span class="tech-badge">MySQL</span>
+                </div>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">[On Progress]</a>
             </div>
         </div>
     </div>
     <div id="spotlight-cursor"></div>
+
+    <!-- Scripts -->
     <script src="assets/js/script.js"></script>
     <script>
         function updateProfileImg() {
@@ -159,37 +194,51 @@
         document.addEventListener('DOMContentLoaded', function() {
             const toggleBtn = document.getElementById('toggle-mode');
             if (toggleBtn) {
-                toggleBtn.addEventListener('click', function() {
+                toggleBtn.addEventListener('change', function() {
                     setTimeout(updateProfileImg, 10);
                 });
             }
         });
+
+        // Gallery and resume toggles
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project gallery toggles
+            document.querySelectorAll('.toggle-gallery-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const galleryId = btn.getAttribute('aria-controls');
+                    const gallery = document.getElementById(galleryId);
+                    const isOpen = gallery.classList.contains('open');
+                    if (isOpen) {
+                        gallery.classList.remove('open');
+                        btn.textContent = '▼ Samples';
+                        btn.setAttribute('aria-expanded', false);
+                    } else {
+                        gallery.classList.add('open');
+                        btn.textContent = '▲ Samples';
+                        btn.setAttribute('aria-expanded', true);
+                    }
+                });
+            });
+
+            // Resume toggle with fade
+            const toggleBtn = document.getElementById('toggle-resume-view');
+            const pdfViewer = document.getElementById('resume-pdf-viewer');
+            let isVisible = false;
+            if (toggleBtn && pdfViewer) {
+                toggleBtn.addEventListener('click', function() {
+                    isVisible = !isVisible;
+                    if (isVisible) {
+                        pdfViewer.classList.add('open');
+                        toggleBtn.textContent = '▲ Hide Resume';
+                    } else {
+                        pdfViewer.classList.remove('open');
+                        toggleBtn.textContent = '▼ Show Resume';
+                    }
+                    toggleBtn.setAttribute('aria-expanded', isVisible);
+                });
+            }
+        });
     </script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.toggle-gallery-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            const galleryId = btn.getAttribute('aria-controls');
-            const gallery = document.getElementById(galleryId);
-            const isVisible = gallery.style.display === 'flex';
-            gallery.style.display = isVisible ? 'none' : 'flex';
-            btn.textContent = isVisible ? '▼ Samples' : '▲ Samples';
-            btn.setAttribute('aria-expanded', !isVisible);
-        });
-    });
-    const toggleBtn = document.getElementById('toggle-resume-view');
-    const pdfViewer = document.getElementById('resume-pdf-viewer');
-    let isVisible = false;
-    if (toggleBtn && pdfViewer) {
-        toggleBtn.addEventListener('click', function() {
-            isVisible = !isVisible;
-            pdfViewer.style.display = isVisible ? 'block' : 'none';
-            toggleBtn.textContent = isVisible ? '▲ Hide Resume' : '▼ Show Resume';
-            toggleBtn.setAttribute('aria-expanded', isVisible);
-        });
-    }
-});
-</script>
 
     <footer class="footer-main">
         <div class="footer-links">

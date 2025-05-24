@@ -4,18 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load mode from localStorage
     if (localStorage.getItem('mode') === 'dark') {
         body.classList.add('dark-mode');
-        if (toggleBtn) toggleBtn.textContent = '☀️';
+        if (toggleBtn) toggleBtn.textContent = 'DARK';
     } else {
-        if (toggleBtn) toggleBtn.textContent = '🌙';
+        if (toggleBtn) toggleBtn.textContent = 'LIGHT';
     }
     if (toggleBtn) {
         toggleBtn.addEventListener('click', function() {
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
-                toggleBtn.textContent = '☀️';
+                toggleBtn.textContent = 'DARK';
                 localStorage.setItem('mode', 'dark');
             } else {
-                toggleBtn.textContent = '🌙';
+                toggleBtn.textContent = 'LIGHT';
                 localStorage.setItem('mode', 'light');
             }
         });
