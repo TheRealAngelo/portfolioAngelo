@@ -37,7 +37,7 @@
 
     <!-- About Section -->
     <div class="container about-profile-wrapper" id="about">
-        <img id="profile-img" src="assets/pictures/Profilelight.png" alt="Profile Photo" class="about-profile-img">
+        <img id="profile-img" src="assets/pictures/Profile.png" alt="Profile Photo" class="about-profile-img">
         <div class="about-content">
             <h1>Angelo Montojo Morales</h1>
             <p>
@@ -193,14 +193,6 @@
     <!-- Scripts -->
     <script src="assets/js/script.js"></script>
     <script>
-        function updateProfileImg() {
-            const img = document.getElementById('profile-img');
-            if (document.body.classList.contains('dark-mode')) {
-                img.src = 'assets/pictures/Profiledark.png';
-            } else {
-                img.src = 'assets/pictures/Profilelight.png';
-            }
-        }
         document.addEventListener('DOMContentLoaded', updateProfileImg);
         document.addEventListener('DOMContentLoaded', function() {
             const toggleModeBtn = document.getElementById('toggle-mode');
