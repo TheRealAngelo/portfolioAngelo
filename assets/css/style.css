@@ -619,11 +619,11 @@ body.dark-mode .nav-hamburger span {
   }
   .nav-links-wrapper a {
     display: block;
-    padding: 12px 0;
+    padding: 12px 8px;
     color: #fff;
     font-size: 1.1em;
     border-radius: 4px;
-    text-align: left;
+    text-align: center;
     transition: background 0.2s;
   }
   .nav-hamburger {
