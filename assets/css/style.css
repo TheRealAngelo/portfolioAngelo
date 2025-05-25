@@ -89,6 +89,7 @@ h2 {
 h1 {
     font-size: 2.2em;
     margin-bottom: 0.3em;
+    margin-left: .5em;
 }
 
 h2 {
@@ -426,6 +427,8 @@ body.dark-mode .resume-toggle-btn:hover {
 
 .about-content p {
     text-align: justify;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .about-profile-wrapper {
