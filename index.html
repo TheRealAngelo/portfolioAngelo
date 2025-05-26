@@ -9,31 +9,34 @@
 <body>
     <!-- Navbar -->
     <nav>
-      <ul style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 0; padding: 0 24px; list-style: none;"> <!-- DONT TOUCH -->
-        <li style="display: flex; align-items: center; margin-right: 24px;">
-          <img src="assets/pictures/logo.png" alt="Logo" style="height:38px; margin-right:10px; border-radius:6px;">
-          <span style="color: #fff; font-size: 1.2em; font-weight: bold;">Angelo Morales</span>
-        </li>
-        <li class="nav-right" style="display: flex; align-items: center;">
-          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-          <div class="nav-links-wrapper" id="nav-links-wrapper">
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#resume">Resume</a></li>
-              <li><a href="#certification">Certifications</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <label class="switch" style="margin-left:16px; margin-right:40px;">
-            <input type="checkbox" id="toggle-mode">
-            <span class="slider"></span>
-          </label>
-        </li>
+  <ul class="main-nav-ul">
+    <li class="nav-logo-title">
+      <img src="assets/pictures/logo.png" alt="Logo" class="nav-logo">
+      <span class="nav-title">Angelo Morales</span>
+    </li>
+    
+    <li>
+  <div class="nav-controls">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links-wrapper" id="nav-links-wrapper">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#certification">Certifications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-    </nav>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="toggle-mode">
+      <span class="slider"></span>
+    </label>
+  </div>
+</li>
+  </ul>
+</nav>
 
     <!-- About Section -->
     <div class="container about-profile-wrapper" id="about">
@@ -79,21 +82,12 @@
 
     <!-- Projects Section -->
     <div class="container" id="projects">
-        <h1>My Projects</h1>
-        <div class="projects-list">
-            <div class="project">
-                <div class="project-content">
-                    <h2>Grade View Portal</h2>
-                    <p>Grade View Portal For San Vicente Academy a school project</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">HTML</span>
-                        <span class="tech-badge">PHP</span>
-                        <span class="tech-badge">CSS</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">MySQL</span>
-                    </div>
-                </div>
-                <a href="https://github.com/TheRealAngelo/GradeViewPortal" target="_blank">[GitHub]</a>
+    <h1>My Projects</h1>
+    <div class="projects-list">
+        <!-- Grade View Portal -->
+        <div class="project">
+            <div class="project-content">
+                <h2>Grade View Portal</h2>
                 <div class="project-gallery open" id="gradeview-gallery">
                     <img src="assets/pictures/GradeViewSystem/GradeViewLogin.png" alt="Grade View Portal Screenshot 1" class="project-image">
                     <img src="assets/pictures/GradeViewSystem/GradeViewStudDashBoard.png" alt="Grade View Portal Screenshot 2" class="project-image">
@@ -101,19 +95,23 @@
                     <img src="assets/pictures/GradeViewSystem/GradeViewFacDashBoard.png" alt="Grade View Portal Screenshot 4" class="project-image">
                     <img src="assets/pictures/GradeViewSystem/GradeViewFacEditGrades.png" alt="Grade View Portal Screenshot 5" class="project-image">
                 </div>
+                <a href="https://github.com/TheRealAngelo/GradeViewPortal" target="_blank">[GitHub]</a>
+                <p>Grade View Portal for San Vicente Academy, a school project</p>
             </div>
-            <div class="project">
-                <div class="project-content">
-                    <h2>Commission Tracker System</h2>
-                    <p>Commission Tracking System for EZD marketing a school project</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Laravel PHP</span>
-                        <span class="tech-badge">Tailwind CSS</span>
-                        <span class="tech-badge">MySQL</span>
-                        <span class="tech-badge">JavaScript</span>
-                    </div>
+            <div class="project-actions">
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">CSS</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">MySQL</span>
                 </div>
-                <a href="https://github.com/TheRealAngelo/commission_tracker_system" target="_blank">[GitHub]</a>
+            </div>
+        </div>
+        <!-- Commission Tracker System -->
+        <div class="project">
+            <div class="project-content">
+                <h2>Commission Tracker</h2>
                 <div class="project-gallery open" id="commission-gallery">
                     <img src="assets/pictures/Commission/CommissionLogin.png" alt="Commission Tracker Screenshot 1" class="project-image">
                     <img src="assets/pictures/Commission/CommissionDashboard.png" alt="Commission Tracker Screenshot 2" class="project-image">
@@ -122,75 +120,100 @@
                     <img src="assets/pictures/Commission/CommissionManageUsers.png" alt="Commission Tracker Screenshot 5" class="project-image">
                     <img src="assets/pictures/Commission/CommissionManageAgents.png" alt="Commission Tracker Screenshot 6" class="project-image">
                 </div>
+                <a href="https://github.com/TheRealAngelo/commission_tracker_system" target="_blank">[GitHub]</a>
+                <p>Commission Tracking System for EZD Marketing, a school project</p>
             </div>
-            <div class="project">
-                <div class="project-content">
-                    <h2>Chicken Rover</h2>
-                    <p>Two Wheeled Robot for Arduino Project</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">C++</span>
-                        <span class="tech-badge">Arduino</span>
-                    </div>
+            <div class="project-actions">
+                <div class="tech-stack">
+                    <span class="tech-badge">Laravel PHP</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                    <span class="tech-badge">MySQL</span>
+                    <span class="tech-badge">JavaScript</span>
                 </div>
-                    <a href="https://github.com/TheRealAngelo/ChickenRover" target="_blank">[GitHub]</a>
+            </div>
+        </div>
+        <!-- Chicken Rover -->
+        <div class="project">
+            <div class="project-content">
+                <h2>Chicken Rover</h2>
                 <div class="project-gallery open" id="robotics-gallery">
-                    <img src="assets/pictures/Arduino/arduinoposter.png" alt="Commission Tracker Screenshot 1" class="project-image">
-                    <img src="assets/pictures/Arduino/arduinoactual.png" alt="Commission Tracker Screenshot 2" class="project-image">
-                    <img src="assets/pictures/Arduino/arduinoactual2.png" alt="Commission Tracker Screenshot 3" class="project-image">
+                    <img src="assets/pictures/Arduino/arduinoposter.png" alt="Chicken Rover Screenshot 1" class="project-image">
+                    <img src="assets/pictures/Arduino/arduinoactual.png" alt="Chicken Rover Screenshot 2" class="project-image">
+                    <img src="assets/pictures/Arduino/arduinoactual2.png" alt="Chicken Rover Screenshot 3" class="project-image">
+                </div>
+                <a href="https://github.com/TheRealAngelo/ChickenRover" target="_blank">[GitHub]</a>
+                <p>Two Wheeled Robot for Arduino Project</p>
+            </div>
+            <div class="project-actions">
+                <div class="tech-stack">
+                    <span class="tech-badge">C++</span>
+                    <span class="tech-badge">Arduino</span>
+                    <span class="tech-badge">DIY</span>
+                    <span class="tech-badge">Electronics</span>
                 </div>
             </div>
-            <div class="project">
-                <div class="project-content">
-                    <h2>Shoppcie</h2>
-                    <p>Ecommerce Web development Project</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">CSS</span>
-                        <span class="tech-badge">HTML</span>
-                        <span class="tech-badge">PHP</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">MySQL</span>
-                    </div>
-                </div>
-                    <a href="https://github.com/TheRealAngelo/" target="_blank">[GitHub]</a>
+        </div>
+        <!-- Shoppcie -->
+        <div class="project">
+            <div class="project-content">
+                <h2>Shoppcie</h2>
                 <div class="project-gallery open" id="ecommerce-gallery">
-                 <img src="assets/pictures/Shoppcie/Ecommerce1.png" alt="ecommerce Screenshot 1" class="project-image">
-                 <img src="assets/pictures/Shoppcie/Ecommerce2.png" alt="ecommerce Screenshot 2" class="project-image">
+                    <img src="assets/pictures/Shoppcie/Ecommerce1.png" alt="Ecommerce Screenshot 1" class="project-image">
+                    <img src="assets/pictures/Shoppcie/Ecommerce2.png" alt="Ecommerce Screenshot 2" class="project-image">
+                </div>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">[GitHub]</a>
+                <p>Ecommerce Web Development Project</p>
+            </div>
+            <div class="project-actions">
+                <div class="tech-stack">
+                    <span class="tech-badge">CSS</span>
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">MySQL</span>
                 </div>
             </div>
-            <div class="project">
-                <div class="project-content">
-                    <h2>CrowDataBase</h2>
-                    <p>Kiosk Ordering System for burger Joint a Databases project</p> 
-                    <div class="tech-stack">
-                        <span class="tech-badge">PHP</span>
-                        <span class="tech-badge">HTML</span>
-                        <span class="tech-badge">MySQL</span>
-                        <span class="tech-badge">JavaScript</span>
-                    </div>
-                </div>
-                    <a href="https://github.com/TheRealAngelo/" target="_blank">[GitHub]</a>
+        </div>
+        <!-- CrowDataBase -->
+        <div class="project">
+            <div class="project-content">
+                <h2>CrowDataBase</h2>
                 <div class="project-gallery open" id="burgerjoint-gallery">
                     <img src="assets/pictures/BurgerJoint/BurgerJoint.png" alt="Burger Joint Screenshot 1" class="project-image">
                     <img src="assets/pictures/BurgerJoint/BurgerJointMenu.png" alt="Burger Joint Screenshot 2" class="project-image">
                     <img src="assets/pictures/BurgerJoint/BurgerJointOrder.png" alt="Burger Joint Screenshot 3" class="project-image">
                 </div>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">[GitHub]</a>
+                <p>Kiosk Ordering System for Burger Joint, a databases project</p>
+            </div>
+            <div class="project-actions">
+                <div class="tech-stack">
+                    <span class="tech-badge">PHP</span>
+                    <span class="tech-badge">HTML</span>
+                    <span class="tech-badge">MySQL</span>
+                    <span class="tech-badge">JavaScript</span>
+                </div>
             </div>
         </div>
-        <h1>On Going Projects</h1>
-        <div class="projects-list">
-            <div class="project">
+    </div>
+    <h1>On Going Projects</h1>
+    <div class="projects-list">
+        <div class="project">
+            <div class="project-content">
                 <h2>School Information System</h2>
-                <p>Full School Information system</p>
-                <p>languages: Laravel PHP, Tailwind CSS, MySQL</p>
+                <a href="https://github.com/TheRealAngelo/" target="_blank">[On Progress]</a>
+                <p>Full School Information System</p>
+            </div>
+            <div class="project-actions">
                 <div class="tech-stack">
                     <span class="tech-badge">Laravel PHP</span>
                     <span class="tech-badge">Tailwind CSS</span>
                     <span class="tech-badge">MySQL</span>
                 </div>
-                <a href="https://github.com/TheRealAngelo/" target="_blank">[On Progress]</a>
             </div>
         </div>
     </div>
+</div>
     <div id="spotlight-cursor"></div>
 
     <!-- Scripts -->
