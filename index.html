@@ -5,37 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angelo Morales Portfolio</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/png" href="assets/pictures/logo.png">
 </head>
 <body>
     <!-- Navbar -->
-    <nav>
+<nav>
   <ul class="main-nav-ul">
-    <li class="nav-logo-title">
-      <img src="assets/pictures/logo.png" alt="Logo" class="nav-logo">
-      <span class="nav-title">Angelo Morales</span>
-    </li>
-    
     <li>
-  <div class="nav-controls">
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-links-wrapper" id="nav-links-wrapper">
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#certification">Certifications</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <label class="switch">
-      <input type="checkbox" id="toggle-mode">
-      <span class="slider"></span>
-    </label>
-  </div>
-</li>
+        <div class="nav-controls">
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links-wrapper" id="nav-links-wrapper">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#certification">Certifications</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="toggle-mode">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </li>
   </ul>
 </nav>
 
@@ -50,6 +44,33 @@
             <p>
                 Outside of coding, I enjoy PC building, cycling, motor touring, cooking, playing video games, and going for a swim or freedive whenever I can. I'm always eager to learn, collaborate, and take on real-world challenges.
             </p>
+            <h2>My tech Stack</h2>
+            <div class="tech-stack-images">
+                <div class="tech-item">
+                    <img src="assets/pictures/Techstack/Html-Icon-Light.svg" alt="HTML5" class="tech-image">
+                </div>
+                <div class="tech-item">
+                    <img src="assets/pictures/Techstack/Css-Icon-Light.svg" alt="CSS3" class="tech-image">
+                </div>
+                <div class="tech-item">
+                    <img src="assets/pictures/Techstack/Java-Icon-Light.svg" alt="Java" class="tech-image">
+                </div>
+                <div class="tech-item">
+                    <img src="assets/pictures/Techstack/Js-Icon-Light.svg" alt="JavaScript" class="tech-image">
+                </div>
+                <div class="tech-item">
+                    <img src="assets/pictures/Techstack/Php-Icon-Light.svg" alt="PHP" class="tech-image">
+                </div>
+                <div class="tech-item">
+                    <img src="assets/pictures/Techstack/Laravel-Icon-Light.svg" alt="Laravel" class="tech-image">
+                </div>
+                <div class="tech-item">
+                    <img src="assets/pictures/Techstack/Git-Icon-Light.svg" alt="Git" class="tech-image">
+                </div>
+                <div class="tech-item">
+                    <img src="assets/pictures/Techstack/CPlusPlus-Icon-Light.svg" alt="C++" class="tech-image">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -60,9 +81,11 @@
             <button id="toggle-resume-view" class="resume-toggle-btn" aria-expanded="false" aria-controls="resume-pdf-viewer">
                 ▼ Show Resume
             </button>
-            <a href="assets/files/AngeloMorales_Resume.pdf" target="_blank" class="resume-btn">
-                Download Resume 
+            <a href="assets/files/AngeloMorales_Resume.pdf" download class="resume-btn">Download Resume 
+
             </a>
+                
+           
         </p>
         <div class="resume-pdf-viewer" id="resume-pdf-viewer">
             <iframe src="assets/files/AngeloMorales_Resume.pdf" width="100%" height="600px" style="border:none;"></iframe>
@@ -72,15 +95,20 @@
     <!-- Certificate Section -->
     <div class="container" id="certification">
         <h1>Certification</h1>
-        <div class="certificates-list">
-            <div class="certificate-card">
+        <div class="certificates-carousel">
+            <button class="carousel-btn left-btn" id="prev-btn" aria-label="Previous">
+                &#9664;
+            </button>
+            <div class="certificates-wrapper">
                 <img src="assets/pictures/it-specialist-databases.png" alt="IT Specialist Certificate" class="certificate-image">
                 <img src="assets/pictures/it-specialist-html-and-css.png" alt="IT Specialist Certificate" class="certificate-image">
                 <img src="assets/pictures/it-specialist-network-security.png" alt="IT Specialist Certificate" class="certificate-image">
             </div>
+            <button class="carousel-btn right-btn" id="next-btn" aria-label="Next">
+                &#9654;
+            </button>
         </div>
     </div>
-
     <!-- Projects Section -->
     <div class="container" id="projects">
     <h1>My Projects</h1>
@@ -199,24 +227,6 @@
             </div>
         </div>
     </div>
-    <h1>On Going Projects</h1>
-    <div class="projects-list">
-        <div class="project">
-            <div class="project-content">
-                <h2>School Information System</h2>
-                <a href="https://github.com/TheRealAngelo/" target="_blank">[On Progress]</a>
-                <p>Full School Information System</p>
-            </div>
-            <div class="project-actions">
-                <div class="tech-stack">
-                    <span class="tech-badge">Laravel PHP</span>
-                    <span class="tech-badge">Tailwind CSS</span>
-                    <span class="tech-badge">MySQL</span>
-                    <span class="tech-badge">JavaScript</span>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
     <div id="spotlight-cursor"></div>
 
@@ -280,9 +290,6 @@ window.addEventListener('resize', handleNavScroll);
             </a>
             <a href="https://github.com/TheRealAngelo" target="_blank" class="footer-link">
                 <img src="assets/pictures/github-icon.svg" alt="GitHub" class="footer-icon">
-            </a>
-            <a href="https://steamcommunity.com/id/Billzebubz/" target="_blank" class="footer-link">
-                <img src="assets/pictures/steam-icon.svg" alt="Steam" class="footer-icon">
             </a>
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=morales.angelo2000@gmail.com" target="_blank" class="footer-link">
                 <img src="assets/pictures/email-icon.svg" alt="Email" class="footer-icon">
