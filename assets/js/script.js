@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentIndex = 0;
 
     function updateCarousel() {
-        const offset = -currentIndex * 100; // Move by 100% for each image
+        const offset = -currentIndex * 100;
         wrapper.style.transform = `translateX(${offset}%)`;
     }
 
@@ -126,4 +126,79 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     updateCarousel();
+});
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.innerWidth <= 600) {
+        // First carousel
+        setupCarousel('cert-wrapper', 'cert-prev-btn', 'cert-next-btn');
+        // Second carousel
+        setupCarousel('certs-wrapper', 'certs-prev-btn', 'certs-next-btn');
+    }
+});
+
+function setupCarousel(wrapperId, prevBtnId, nextBtnId) {
+    const wrapper = document.getElementById(wrapperId);
+    const images = wrapper ? wrapper.querySelectorAll('.certificate-image') : [];
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        images.forEach((img, idx) => {
+            img.style.display = (idx === currentIndex) ? 'block' : 'none';
+        });
+    }
+
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+
+    if (prevBtn && nextBtn && images.length > 0) {
+        prevBtn.addEventListener('click', function () {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', function () {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+        updateCarousel();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const sections = ['about', 'resume', 'certification', 'projects', 'contact'];
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function setActiveNav() {
+        let current = '';
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        if (scrollY < 10) {
+            current = 'about';
+        }
+        else if (scrollY + windowHeight >= docHeight - 10) {
+            current = 'contact';
+        } else {
+            let minDiff = Infinity;
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    const diff = Math.abs(rect.top);
+                    if (rect.top <= windowHeight / 2 && diff < minDiff) {
+                        minDiff = diff;
+                        current = id;
+                    }
+                }
+            });
+        }
+
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+    }
+
+    window.addEventListener('scroll', setActiveNav);
+    window.addEventListener('resize', setActiveNav);
+    setActiveNav(); 
 });
