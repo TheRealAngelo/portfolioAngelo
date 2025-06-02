@@ -202,3 +202,76 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', setActiveNav);
     setActiveNav(); 
 });
+document.addEventListener('DOMContentLoaded', function() {
+    function updateProjectLinkIcons() {
+        const isDark = document.body.classList.contains('dark-mode');
+        document.querySelectorAll('.project-link-icon').forEach(icon => {
+            icon.src = isDark
+                ? 'assets/pictures/Link-Icon-Dark.svg'
+                : 'assets/pictures/Link-Icon-Light.svg';
+        });
+    }
+    // Run on load and when dark mode toggles
+    updateProjectLinkIcons();
+    const toggle = document.getElementById('toggle-mode');
+    if (toggle) {
+        toggle.addEventListener('change', updateProjectLinkIcons);
+    }
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const btnUp = document.getElementById('btn-up');
+    const btnDown = document.getElementById('btn-down');
+    const btnHome = document.getElementById('btn-home');
+    const sections = ['about', 'resume', 'certification', 'projects', 'contact'];
+
+    // Helper: get the index of the section closest to the top of the viewport
+    function getCurrentSectionIndex() {
+        let closestIdx = 0;
+        let minDist = Infinity;
+        for (let i = 0; i < sections.length; i++) {
+            const section = document.getElementById(sections[i]);
+            if (section) {
+                const rect = section.getBoundingClientRect();
+                const dist = Math.abs(rect.top - 80); // 80px offset for sticky nav
+                if (rect.top - 80 <= 0 && dist < minDist) {
+                    minDist = dist;
+                    closestIdx = i;
+                }
+            }
+        }
+        return closestIdx;
+    }
+
+    if (btnUp) {
+        btnUp.addEventListener('click', function() {
+            const idx = getCurrentSectionIndex();
+            if (idx > 0) {
+                const prevSection = document.getElementById(sections[idx - 1]);
+                if (prevSection) {
+                    prevSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    }
+    if (btnDown) {
+        btnDown.addEventListener('click', function() {
+            const idx = getCurrentSectionIndex();
+            if (idx < sections.length - 1) {
+                const nextSection = document.getElementById(sections[idx + 1]);
+                if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    }
+    if (btnHome) {
+        btnHome.addEventListener('click', function() {
+            const homeSection = document.getElementById(sections[0]);
+            if (homeSection) {
+                homeSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            }
+        });
+    }
+});
