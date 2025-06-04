@@ -21,8 +21,45 @@ if (toggleBtn) {
             toggleBtn.textContent = 'LIGHT';
             localStorage.setItem('mode', 'light');
         }
+        updateButtonIcons();
+        updateProjectLinkIcons();
     });
 }
+
+// Update Resume Button Icons Based on Dark Mode
+function updateButtonIcons() {
+    const isDarkMode = body.classList.contains('dark-mode');
+    const externalIcon = document.querySelector('.resume-btn img[alt="External Link Icon"]');
+    const downloadIcon = document.querySelector('.resume-btn img[alt="Download Icon"]');
+
+    if (externalIcon) {
+        externalIcon.src = isDarkMode
+            ? 'assets/pictures/External-Icon-Light.svg'
+            : 'assets/pictures/External-Icon-Dark.svg';
+    }
+
+    if (downloadIcon) {
+        downloadIcon.src = isDarkMode
+            ? 'assets/pictures/Download-Icon-Light.svg'
+            : 'assets/pictures/Download-Icon-Dark.svg';
+    }
+}
+
+// Update Project Link Icons Based on Dark Mode
+function updateProjectLinkIcons() {
+    const isDarkMode = body.classList.contains('dark-mode');
+    document.querySelectorAll('.project-link-icon').forEach(icon => {
+        icon.src = isDarkMode
+            ? 'assets/pictures/Link-Icon-Dark.svg'
+            : 'assets/pictures/Link-Icon-Light.svg';
+    });
+}
+
+// Update icons on page load
+document.addEventListener('DOMContentLoaded', function () {
+    updateButtonIcons();
+    updateProjectLinkIcons();
+});
 
 // Mouse Spotlight Effect for Dark Mode
 const spotlight = document.getElementById('spotlight-cursor');
@@ -74,7 +111,7 @@ if (hamburger && navLinks) {
         hamburger.setAttribute('aria-expanded', isOpen);
     });
 
-    // Optional: Close menu when clicking outside
+    // Close menu when clicking outside
     document.addEventListener('click', function (e) {
         if (
             navLinks.classList.contains('open') &&
@@ -101,69 +138,105 @@ if (navLinksWrapper) {
 
 // Certificates Carousel Functionality
 document.addEventListener('DOMContentLoaded', function () {
-    const wrapper = document.querySelector('.certificates-wrapper');
-    const images = document.querySelectorAll('.certificate-image');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
+    function setupCarousel(wrapperId, prevBtnId, nextBtnId) {
+        const wrapper = document.getElementById(wrapperId);
+        const images = wrapper ? wrapper.querySelectorAll('.certificate-image') : [];
+        let currentIndex = 0;
 
-    let currentIndex = 0;
+        function updateCarousel() {
+            images.forEach((img, idx) => {
+                img.style.display = (idx === currentIndex) ? 'block' : 'none';
+            });
+        }
 
-    function updateCarousel() {
-        const offset = -currentIndex * 100;
-        wrapper.style.transform = `translateX(${offset}%)`;
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+
+        if (prevBtn && nextBtn && images.length > 0) {
+            prevBtn.addEventListener('click', function () {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', function () {
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+            updateCarousel();
+        }
     }
 
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', function () {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-            updateCarousel();
-        });
-
-        nextBtn.addEventListener('click', function () {
-            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-            updateCarousel();
-        });
-    }
-
-    updateCarousel();
+    // Setup carousels with new IDs
+    setupCarousel('cert-wrapper', 'cert-prev-btn', 'cert-next-btn');
+    setupCarousel('badge-wrapper', 'badge-prev-btn', 'badge-next-btn');
 });
+
 document.addEventListener('DOMContentLoaded', function () {
-    if (window.innerWidth <= 600) {
-        // First carousel
-        setupCarousel('cert-wrapper', 'cert-prev-btn', 'cert-next-btn');
-        // Second carousel
-        setupCarousel('certs-wrapper', 'certs-prev-btn', 'certs-next-btn');
+    const certWrapper = document.getElementById('cert-wrapper');
+    const certImages = certWrapper ? certWrapper.querySelectorAll('.certificate-image') : [];
+
+    const badgeWrapper = document.getElementById('badge-wrapper');
+    const badgeImages = badgeWrapper ? badgeWrapper.querySelectorAll('.certificate-image') : [];
+
+    function updateCertificationsDisplay() {
+        if (window.innerWidth <= 768) {
+            // Mobile view: Show only the first certification
+            certImages.forEach((img, index) => {
+                img.style.display = index === 0 ? 'block' : 'none';
+            });
+        } else {
+            // Web view: Show all certifications
+            certImages.forEach(img => {
+                img.style.display = 'block';
+            });
+        }
     }
+
+    function updateBadgesDisplay() {
+        if (window.innerWidth <= 768) {
+            // Mobile view: Show only the first badge
+            badgeImages.forEach((img, index) => {
+                img.style.display = index === 0 ? 'block' : 'none';
+            });
+        } else {
+            // Web view: Show all badges
+            badgeImages.forEach(img => {
+                img.style.display = 'block';
+            });
+        }
+    }
+
+    // Update display on page load and when resizing the window
+    updateCertificationsDisplay();
+    updateBadgesDisplay();
+    window.addEventListener('resize', () => {
+        updateCertificationsDisplay();
+        updateBadgesDisplay();
+    });
 });
 
-function setupCarousel(wrapperId, prevBtnId, nextBtnId) {
-    const wrapper = document.getElementById(wrapperId);
-    const images = wrapper ? wrapper.querySelectorAll('.certificate-image') : [];
-    let currentIndex = 0;
+// Smooth Scrolling for Navbar Links
+document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-    function updateCarousel() {
-        images.forEach((img, idx) => {
-            img.style.display = (idx === currentIndex) ? 'block' : 'none';
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                e.preventDefault();
+                if (targetId === 'login' || window.location.hash === '#login') {
+                    targetElement.scrollIntoView({ behavior: 'auto' });
+                } else {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         });
-    }
+    });
+});
 
-    const prevBtn = document.getElementById(prevBtnId);
-    const nextBtn = document.getElementById(nextBtnId);
-
-    if (prevBtn && nextBtn && images.length > 0) {
-        prevBtn.addEventListener('click', function () {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-            updateCarousel();
-        });
-
-        nextBtn.addEventListener('click', function () {
-            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-            updateCarousel();
-        });
-        updateCarousel();
-    }
-}
-
+// Highlight Active Navbar Link
 document.addEventListener('DOMContentLoaded', function () {
     const sections = ['about', 'resume', 'certification', 'projects', 'contact'];
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -173,10 +246,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
         const docHeight = document.documentElement.scrollHeight;
+
         if (scrollY < 10) {
             current = 'about';
-        }
-        else if (scrollY + windowHeight >= docHeight - 10) {
+        } else if (scrollY + windowHeight >= docHeight - 10) {
             current = 'contact';
         } else {
             let minDiff = Infinity;
@@ -200,77 +273,72 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('scroll', setActiveNav);
     window.addEventListener('resize', setActiveNav);
-    setActiveNav(); 
+    setActiveNav();
 });
-document.addEventListener('DOMContentLoaded', function() {
-    function updateProjectLinkIcons() {
-        const isDark = document.body.classList.contains('dark-mode');
-        document.querySelectorAll('.project-link-icon').forEach(icon => {
-            icon.src = isDark
-                ? 'assets/pictures/Link-Icon-Dark.svg'
-                : 'assets/pictures/Link-Icon-Light.svg';
-        });
-    }
-    // Run on load and when dark mode toggles
-    updateProjectLinkIcons();
-    const toggle = document.getElementById('toggle-mode');
-    if (toggle) {
-        toggle.addEventListener('change', updateProjectLinkIcons);
-    }
-});
-document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function () {
     const btnUp = document.getElementById('btn-up');
-    const btnDown = document.getElementById('btn-down');
     const btnHome = document.getElementById('btn-home');
+    const btnDown = document.getElementById('btn-down');
+
+    // Define the sections to navigate between
     const sections = ['about', 'resume', 'certification', 'projects', 'contact'];
 
-    // Helper: get the index of the section closest to the top of the viewport
-    function getCurrentSectionIndex() {
-        let closestIdx = 0;
-        let minDist = Infinity;
-        for (let i = 0; i < sections.length; i++) {
-            const section = document.getElementById(sections[i]);
+    // Helper function to get the current section
+    function getCurrentSection() {
+        let current = '';
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        sections.forEach(id => {
+            const section = document.getElementById(id);
             if (section) {
                 const rect = section.getBoundingClientRect();
-                const dist = Math.abs(rect.top - 80); // 80px offset for sticky nav
-                if (rect.top - 80 <= 0 && dist < minDist) {
-                    minDist = dist;
-                    closestIdx = i;
+                if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
+                    current = id;
                 }
             }
-        }
-        return closestIdx;
+        });
+
+        return current;
     }
 
+    // Scroll Up Button
     if (btnUp) {
-        btnUp.addEventListener('click', function() {
-            const idx = getCurrentSectionIndex();
-            if (idx > 0) {
-                const prevSection = document.getElementById(sections[idx - 1]);
-                if (prevSection) {
-                    prevSection.scrollIntoView({ behavior: 'smooth' });
+        btnUp.addEventListener('click', function () {
+            const currentSection = getCurrentSection();
+            const currentIndex = sections.indexOf(currentSection);
+
+            if (currentIndex > 0) {
+                const previousSection = document.getElementById(sections[currentIndex - 1]);
+                if (previousSection) {
+                    previousSection.scrollIntoView({ behavior: 'smooth' });
                 }
             }
         });
     }
+
+    // Go Home Button
+    if (btnHome) {
+        btnHome.addEventListener('click', function () {
+            const homeSection = document.getElementById('about');
+            if (homeSection) {
+                homeSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // Scroll Down Button
     if (btnDown) {
-        btnDown.addEventListener('click', function() {
-            const idx = getCurrentSectionIndex();
-            if (idx < sections.length - 1) {
-                const nextSection = document.getElementById(sections[idx + 1]);
+        btnDown.addEventListener('click', function () {
+            const currentSection = getCurrentSection();
+            const currentIndex = sections.indexOf(currentSection);
+
+            if (currentIndex < sections.length - 1) {
+                const nextSection = document.getElementById(sections[currentIndex + 1]);
                 if (nextSection) {
                     nextSection.scrollIntoView({ behavior: 'smooth' });
                 }
-            }
-        });
-    }
-    if (btnHome) {
-        btnHome.addEventListener('click', function() {
-            const homeSection = document.getElementById(sections[0]);
-            if (homeSection) {
-                homeSection.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             }
         });
     }
