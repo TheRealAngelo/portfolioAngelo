@@ -75,7 +75,7 @@ body {
     background: #ffffff93;
     box-shadow: 0 4px 24px #e8491d;
     margin-bottom: 20px;
-    padding-top: 16px;
+    padding-top: 5px;
     padding-bottom: 16px;
 }
 
@@ -111,7 +111,6 @@ h2 {
     margin-top: 1.5em;
     margin-bottom: 0.5em;
     border-bottom: 1px solid #e8491d;
-    display: inline-block;
     padding-bottom: 2px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -1671,3 +1670,27 @@ body.dark-mode .login-form input {
     min-height: 0;
     border: none;
 }
+
+.about-card{
+    max-width: 500px; 
+    margin: 0 auto; 
+    background: #fff; 
+    border-radius: 18px; 
+    box-shadow: 0 4px 24px #e8491d; 
+    padding: 5.5em 2em 2em 2em; 
+    position: relative;
+}
+.about-card p{
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 1.5em;
+    text-align: justify;
+
+}
+
+body.dark-mode .about-card {
+    background: #353942;
+    color: #e0e0e0;
+    box-shadow: 0 4px 24px #ffb37b;
+}
+
