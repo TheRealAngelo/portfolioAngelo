@@ -320,6 +320,32 @@ a:hover {
         box-sizing: border-box;
     }
 
+    #cert-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 32px 32px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 8px;
+        box-sizing: border-box;
+    }
+     #cert-wrapper .certificate-image {
+        flex: 1 1 calc(50% - 32px);
+        /* 2 per row */
+
+        min-width: auto;
+        height: 340px;
+        object-fit: contain;
+        margin: 0;
+        display: block;
+        border-radius: 8px;
+        background: #ffffff00;
+    }
+
+
     #badge-wrapper .certificate-image {
         flex: 1 1 calc(50% - 32px);
         /* 2 per row */
