@@ -7,6 +7,19 @@
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
+        <!-- Particles -->
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
         <!-- Navbar -->
         <nav>
             <ul class="main-nav-ul">
@@ -66,8 +79,8 @@
                             </label>
                             <input type="password" id="login-password" name="username"placeholder="Admin123" value="Admin123" readonly>
                             <button type="button" class="login-btn"
-                                onclick="window.location.href='#about'">Sign
-                                in</button>
+                                onclick="window.location.href='#about'">
+                                Sign In</button>
                         </form>
                         <p>Welcome to my portfolio!</p>
                     </div>
@@ -78,26 +91,27 @@
         <div class="container about-profile-wrapper" id="about">
             <div class="about-card">
                 <img id="profile-img" src="assets/pictures/Profile.png"
-                    alt="Profile Photo" class="about-profile-img">
-                <h1> Angelo Montojo Morales</h1>
-                <p>
+                    alt="Profile Photo" class="about-profile-img scroll-animation">
+                <h1 class="scroll-animation">Angelo Montojo Morales</h1>
+                <p class="scroll-animation">
                     Hi, I'm a Computer Science Major from the University of
-                    Mindanao with a passion for software development, databases,
-                    and building practical tech solutions. I primarily enjoy
-                    working on the backend, focusing on logic, APIs, and
-                    database architecture but I also take on fullstack
-                    development for small sized projects, bringing
-                    ideas to life.
+                    Mindanao with a passion for <span class="highlight">software development</span>, 
+                    <span class="highlight">databases</span>, and building practical tech solutions. 
+                    I primarily enjoy working on the <span class="highlight">backend</span>, 
+                    focusing on logic, APIs, and database architecture but I also take on 
+                    <span class="highlight">fullstack development</span> for small sized projects, 
+                    bringing ideas to life.
                 </p>
-                <p>
-                    Outside of coding, I enjoy PC building, cycling, motor
-                    touring, cooking, playing video games, and going for a swim
-                    or freedive whenever I can. I'm always eager to learn,
-                    collaborate, and take on real-world challenges.
+                <p class="scroll-animation">
+                    Outside of coding, I enjoy PC building, 
+                    cycling, motor touring, 
+                    cooking, playing video games, and going for a swim
+                    or freedive whenever I can. I'm always <span class="highlight">eager to learn</span>,
+                    <span class="highlight">collaborate</span>, and <span class="highlight">take on real-world challenges</span>.
                 </p>
 
-                <h2>My Tech Stack</h2>
-                <div class="tech-stack-images">
+                <h2 class="scroll-animation">My Core Tech Stack</h2>
+                <div class="tech-stack-images scroll-animation">
                     <div class="tech-item">
                         <img src="assets/pictures/Techstack/Html-Icon-Light.svg"
                             alt="HTML5" class="tech-image">
@@ -105,10 +119,6 @@
                     <div class="tech-item">
                         <img src="assets/pictures/Techstack/Css-Icon-Light.svg"
                             alt="CSS3" class="tech-image">
-                    </div>
-                    <div class="tech-item">
-                        <img src="assets/pictures/Techstack/Java-Icon-Light.svg"
-                            alt="Java" class="tech-image">
                     </div>
                     <div class="tech-item">
                         <img src="assets/pictures/Techstack/Js-Icon-Light.svg"
@@ -128,9 +138,12 @@
                             alt="Git" class="tech-image">
                     </div>
                     <div class="tech-item">
-                        <img
-                            src="assets/pictures/Techstack/CPlusPlus-Icon-Light.svg"
-                            alt="C++" class="tech-image">
+                        <img src="assets/pictures/Techstack/Java-Icon-Light.svg"
+                            alt="Java" class="tech-image">
+                    </div>
+                    <div class="tech-item">
+                        <img src="assets/pictures/Techstack/CPlusPlus-Icon-Light.svg"
+                            alt="Cpp" class="tech-image">
                     </div>
                 </div>
             </div>
@@ -433,10 +446,6 @@
                         BurgerJoint kiosk 
                     </p>
                 </div>
-                
-                
-                
-                
                 <!-- Arduino -->
                 <div class="project">
                     <div class="project-content">
@@ -578,46 +587,37 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
         <!-- Footer -->
-        <footer class="footer-main">
-            </div>
-            <div id="contact">
-                <h1 style="color: azure;">Contact Me</h1>
-                <div
-                    style="display:flex; flex-wrap:wrap; align-items:center; gap:32px; justify-content:center;">
-                    <img src="assets/pictures/Profile.png" alt="Profile"
-                        style="width:100px; border-radius:50%; box-shadow:0 2px 8px #e8491d;">
-                </div>
-                <p>Open to development roles eager
-                    <br> to contribute, learn, and grow 
-                    <br>professionally.</p>
-                <div class="footer-links">
-
-                <a href="https://www.facebook.com/angelo.m.morales.9"
-                    target="_blank" class="footer-link">
-                    <img src="assets/pictures/facebook-icon.svg"
-                        alt="Facebook"
-                        class="footer-icon">
-                </a>
-                <a href="https://github.com/TheRealAngelo" target="_blank"
-                    class="footer-link">
-                    <img src="assets/pictures/github-icon.svg" alt="GitHub"
-                        class="footer-icon">
-                </a>
-                <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=morales.angelo2000@gmail.com"
-                    target="_blank" class="footer-link">
-                    <img src="assets/pictures/email-icon.svg" alt="Email"
-                        class="footer-icon">
-                </a>
-                <a href="tel:+639987523614" class="footer-link">
-                    <img src="assets/pictures/phone-icon.svg" alt="Phone"
-                        class="footer-icon">
-                </a>
-            </div>
-            
-            <div class="footer-copy">
-                <p>&copy; 2025 Angelo Morales. All rights reserved.</p>
-            </div>
-        </footer>
+<footer class="footer-main" id="contact">
+    <div class="footer-content">
+        <div class="footer-profile">
+            <img src="assets/pictures/Profile.png" alt="Profile" class="footer-profile-img">
+            <h2>Let's Connect!</h2>
+            <p>Open to development roles and eager to contribute, learn, and grow professionally.</p>
+        </div>
+        
+        <div class="footer-links">
+            <a href="https://www.facebook.com/angelo.m.morales.9" target="_blank" class="footer-link">
+                <img src="assets/pictures/facebook-icon.svg" alt="Facebook" class="footer-icon">
+                <span>Facebook</span>
+            </a>
+            <a href="https://github.com/TheRealAngelo" target="_blank" class="footer-link">
+                <img src="assets/pictures/github-icon.svg" alt="GitHub" class="footer-icon">
+                <span>GitHub</span>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=morales.angelo2000@gmail.com" target="_blank" class="footer-link">
+                <img src="assets/pictures/email-icon.svg" alt="Email" class="footer-icon">
+                <span>Email</span>
+            </a>
+            <a href="tel:+639987523614" class="footer-link">
+                <img src="assets/pictures/phone-icon.svg" alt="Phone" class="footer-icon">
+                <span>Call</span>
+            </a>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 Angelo Morales. All rights reserved.</p>
+    </div>
+</footer>
     </body>
 </html>
