@@ -303,9 +303,23 @@ document.addEventListener('DOMContentLoaded', function () {
         return current;
     }
 
-    // Scroll Up Button
+    // Scroll Up Button - Simple fix
     if (btnUp) {
         btnUp.addEventListener('click', function () {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+
+            // If at bottom of page, go to projects section
+            if (scrollY + windowHeight >= docHeight - 50) {
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+            }
+
+            // Normal section-based navigation
             const currentSection = getCurrentSection();
             const currentIndex = sections.indexOf(currentSection);
 
@@ -342,4 +356,24 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+});
+
+// Add scroll animations
+document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animation
+    const animatedElements = document.querySelectorAll('.scroll-animation');
+    animatedElements.forEach(el => observer.observe(el));
 });
