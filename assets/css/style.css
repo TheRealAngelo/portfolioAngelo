@@ -2494,3 +2494,19 @@ textarea:focus {
     box-shadow: none;
 }
 
+/* Force page to always start at login section */
+html, body {
+    scroll-behavior: auto !important; /* Override smooth scroll for page loads */
+}
+
+/* Ensure login container is always accessible */
+.login-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Re-enable smooth scrolling after page setup */
+html.page-loaded {
+    scroll-behavior: smooth;
+}
+
