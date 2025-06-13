@@ -1096,166 +1096,154 @@ body.dark-mode .nav-hamburger span {
     color: #fff;
 }
 
-/* Hamburger and mobile nav */
-@media (max-width: 768px) {
-    .nav-links-wrapper {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 24px;
-        background: #222c36;
-        border-radius: 8px;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
-        flex-direction: column;
-        min-width: 160px;
-        padding: 16px 0;
-        z-index: 1100;
-        animation: fadeInNav 0.3s;
-    }
-
-    .nav-links-wrapper.open {
-        display: flex;
-    }
-
-    .nav-links-wrapper ul {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .nav-links-wrapper li {
-        width: 100%;
-        padding: 0 24px;
-    }
-
-    .nav-links-wrapper a {
-        display: block;
-        padding: 12px 8px;
-        color: #fff;
-        font-size: 1.1em;
-        border-radius: 4px;
-        text-align: center;
-        transition: background 0.2s;
-    }
-
-    .nav-hamburger {
-        display: flex;
-    }
-
-    .nav-right {
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
+/* Enhanced Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(34, 44, 54, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-@keyframes fadeInNav {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
 }
 
-/* NAV BAR */
-@media (max-width: 768px) {
-
-    #login,
-    #about {
-        scroll-margin-top: 0px;
-    }
-
-    #resume,
-    #certification,
-    #projects {
-        scroll-margin-top: 80px;
-    }
-
-    body {
-        font-family: 'Segoe UI', Arial, sans-serif;
-        margin: 0;
-        padding-top: 10px;
-        background-color: #f4f4f4;
-        color: #222;
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
-
-    }
-
-
-    nav {
-        height: 60px;
-        padding: 6px 0;
-    }
-
-    nav ul {
-        height: 90x;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        height: auto;
-    }
-
-    nav li {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: block;
-    }
-
-    nav {
-        transition: transform 0.3s;
-    }
-
-    .nav-title {
-        display: none !important;
-    }
+/* Nav Brand */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
 }
 
-/* Dark mode for navbar */
-body.dark-mode nav {
-    background: #23272f;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+.nav-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(232, 73, 29, 0.5);
+    transition: all 0.3s ease;
 }
 
-body.dark-mode .nav-links-wrapper {
-    background: #23272f;
+.nav-avatar:hover {
+    border-color: #e8491d;
+    transform: scale(1.05);
 }
 
-body.dark-mode .nav-links-wrapper a {
-    color: #ffff;
+.nav-title {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-body.dark-mode .nav-links-wrapper a:hover,
-body.dark-mode .nav-links-wrapper a:focus {
-    background: #e8491d;
+/* Nav Content */
+.nav-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1em;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+}
+
+
+
+.nav-link:hover::before {
+    left: 100%;
+}
+
+.nav-link:hover{
+    background: rgba(232, 73, 29, 0.15);
     color: #fff;
 }
-
-body.dark-mode nav a:hover,
-body.dark-mode nav a:focus,
-body.dark-mode .nav-links a.active,
-body.dark-mode .nav-links a:hover,
-body.dark-mode .nav-links a:focus,
-body.dark-mode .nav-links-wrapper a:hover,
-body.dark_mode .nav-links-wrapper a:focus {
-    background: #ffb37b;
-    color: #232323;
+.nav-link.active {
+    background: #e8491d;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(232, 73, 29, 0.15);
 }
 
-/* Switch styles (dark mode toggle) */
+/* Add this to override any persistent active states */
+.nav-link:not(.active) {
+    background: transparent !important;
+}
+
+.nav-link.active {
+    background: rgba(232, 73, 29, 0.3);
+    border-radius: 6px;
+}
+
+/* Ensure focus states are removed */
+.nav-link:focus:not(.active) {
+    background: transparent !important;
+    outline: none !important;
+}
+
+/* Nav Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-logout-btn img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+}
+
+.nav-logout-btn:hover {
+    background: rgba(232, 73, 29, 0.2);
+    border-color: rgba(232, 73, 29, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Switch Enhancement */
 .switch {
     position: relative;
     display: inline-block;
-    width: 48px;
+    width: 50px;
     height: 26px;
-    vertical-align: middle;
 }
 
 .switch input {
@@ -1271,9 +1259,10 @@ body.dark_mode .nav-links-wrapper a:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #e8491d;
-    transition: background 0.4s;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
     border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .slider:before {
@@ -1281,118 +1270,169 @@ body.dark_mode .nav-links-wrapper a:focus {
     content: "";
     height: 20px;
     width: 20px;
-    left: 3px;
-    bottom: 3px;
-    background-color: #fff;
-    transition: transform 0.4s;
+    left: 2px;
+    bottom: 2px;
+    background: #fff;
+    transition: all 0.3s ease;
     border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-input:checked+.slider {
-    background-color: #ffb37b;
-}
-
-input:checked+.slider:before {
-    transform: translateX(22px);
-}
-
-body.dark-mode .slider:before {
-    background-color: #111;
-}
-
-.project-gallery {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition:
-        opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
-    pointer-events: none;
-}
-
-.project-gallery.open {
-    opacity: 1;
-    max-height: 500px;
-    max-width: auto;
-    pointer-events: auto;
-    overflow-x: auto;
-    overflow-y: visible;
-}
-
-.tech-stack {
-    margin: 8px 0 14px 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tech-badge {
-    display: inline-block;
+input:checked + .slider {
     background: #e8491d;
+    border-color: #e8491d;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* Hamburger Menu */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.nav-hamburger:hover {
+    background: rgba(232, 73, 29, 0.2);
+    border-color: rgba(232, 73, 29, 0.4);
+}
+
+/* Mobile Menu */
+.nav-mobile-menu {
+    display: none;
+    background: rgba(34, 44, 54, 0.98);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+}
+
+.nav-mobile-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: opx;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-mobile-link {
     color: #fff;
-    font-size: 0.5em;
+    text-decoration: none;
     font-weight: 500;
-    border-radius: 12px;
-    padding: 3px 14px;
-    margin-right: 4px;
-    margin-bottom: 2px;
-    letter-spacing: 0.5px;
-    transition: background 0.3s;
+    font-size: 1.1em;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
 }
 
-.tech-badge:hover {
-    background: #c63c13;
+.nav-mobile-link:hover {
+    background: rgba(232, 73, 29, 0.15);
+    transform: translateX(5px);
 }
 
-body.dark-mode .tech-badge {
+/* Dark Mode */
+body.dark-mode .navbar {
+    background: rgba(23, 27, 35, 0.95);
+    border-bottom-color: rgba(255, 179, 123, 0.2);
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+    background: rgba(255, 179, 123, 0.15);
+    box-shadow: 0 4px 12px rgba(255, 179, 123, 0.2);
+}
+
+body.dark-mode .nav-logout-btn:hover,
+body.dark-mode .nav-hamburger:hover {
+    background: rgba(255, 179, 123, 0.2);
+    border-color: rgba(255, 179, 123, 0.4);
+}
+
+body.dark-mode input:checked + .slider {
     background: #ffb37b;
-    color: #232323;
 }
 
-body.dark-mode .tech-badge:hover {
-    background: #e8491d;
-    color: #fff;
+body.dark-mode .nav-mobile-link:hover {
+    background: rgba(255, 179, 123, 0.15);
 }
 
-.resume-pdf-viewer {
-    opacity: 1;
-    max-height: none;
-    overflow: visible;
-    pointer-events: auto;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-container {
+        height: 60px;
+        padding: 0 15px;
+    }
+    
+    .nav-avatar {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .nav-title {
+        font-size: 1.1em;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-hamburger {
+        display: flex;
+    }
+    
+    .nav-mobile-menu.open {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+    
+    .nav-actions {
+        gap: 10px;
+    }
 }
 
-/* PDF iframe scrollbar styling */
-.resume-pdf-viewer iframe {
-    scrollbar-width: thin;
-    scrollbar-color: #e8491d #eee;
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* For Webkit browsers (Chrome, Edge, Safari) */
-.resume-pdf-viewer iframe::-webkit-scrollbar {
-    width: 8px;
-    background: #eee;
+/* Navbar scroll effect */
+.navbar.scrolled {
+    background: rgba(34, 44, 54, 0.98);
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.15);
 }
 
-.resume-pdf-viewer iframe::-webkit-scrollbar-thumb {
-    background: #e8491d;
-    border-radius: 4px;
-}
-
-/* Dark mode for PDF iframe scrollbar */
-body.dark-mode .resume-pdf-viewer iframe {
-    scrollbar-color: #ffb37b #23272f;
-}
-
-body.dark-mode .resume-pdf-viewer iframe::-webkit-scrollbar {
-    background: #23272f;
-}
-
-body.dark-mode .resume-pdf-viewer iframe::-webkit-scrollbar-thumb {
-    background: #ffb37b;
-    border-radius: 4px;
+body.dark-mode .navbar.scrolled {
+    background: rgba(23, 27, 35, 0.98);
 }
 
 body,
@@ -1577,9 +1617,9 @@ body.dark-mode .projects-list {
 
     .nav-hamburger {
         margin-left: auto;
-        margin-right: 10px;
+        margin-right: auto;
         display: block;
-        padding-right: 50px;
+        padding-right: 6px;
     }
 
 }
@@ -2350,5 +2390,107 @@ body.dark-mode .particle:nth-child(even) {
 .login-btn:active::before {
     width: 300px;
     height: 300px;
+}
+
+/* Hamburger/Burger Menu Button */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(232, 73, 29, 0.1);
+    border: 1px solid rgba(232, 73, 29, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle:hover {
+    background: rgba(232, 73, 29, 0.2);
+    border-color: rgba(232, 73, 29, 0.5);
+}
+
+.nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+/* Show hamburger on mobile */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Hamburger animation when menu is open */
+.nav-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Remove selection highlight and focus states */
+.nav-link {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+}
+
+.nav-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.nav-link:active {
+    background: rgba(232, 73, 29, 0.3);
+    transition: background 0.1s ease;
+}
+
+/* Remove blue highlight on touch devices */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+/* Ensure smooth transitions */
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(232, 73, 29, 0.2);
+}
+
+/* Remove focus outline from all interactive elements */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: none;
 }
 
