@@ -102,39 +102,63 @@ if (spotlight) {
     }
 }
 
-// Mobile Navbar Hamburger Toggle
+// Mobile Navbar Hamburger Toggle - FIXED
 const hamburger = document.getElementById('nav-hamburger');
-const navLinks = document.getElementById('nav-links-wrapper');
-if (hamburger && navLinks) {
+const mobileMenu = document.getElementById('nav-mobile-menu');
+
+if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', function () {
-        const isOpen = navLinks.classList.toggle('open');
+        const isOpen = mobileMenu.classList.toggle('open');
         hamburger.setAttribute('aria-expanded', isOpen);
+        
+        // Animate hamburger lines
+        const spans = hamburger.querySelectorAll('span');
+        if (isOpen) {
+            spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+        } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', function (e) {
         if (
-            navLinks.classList.contains('open') &&
-            !navLinks.contains(e.target) &&
+            mobileMenu.classList.contains('open') &&
+            !mobileMenu.contains(e.target) &&
             !hamburger.contains(e.target)
         ) {
-            navLinks.classList.remove('open');
+            mobileMenu.classList.remove('open');
             hamburger.setAttribute('aria-expanded', false);
+            
+            // Reset hamburger animation
+            const spans = hamburger.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
         }
     });
 }
 
-// Auto-Close Mobile Nav After Clicking a Link
-const navLinksWrapper = document.getElementById('nav-links-wrapper');
-if (navLinksWrapper) {
-    navLinksWrapper.addEventListener('click', function (e) {
-        if (e.target.tagName === 'A' && navLinksWrapper.classList.contains('open')) {
-            navLinksWrapper.classList.remove('open');
-            const hamburger = document.getElementById('nav-hamburger');
-            if (hamburger) hamburger.setAttribute('aria-expanded', false);
+// Auto-close mobile menu when clicking links
+const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+mobileLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', false);
+            
+            // Reset hamburger animation
+            const spans = hamburger.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
         }
     });
-}
+});
 
 // Certificates Carousel Functionality
 document.addEventListener('DOMContentLoaded', function () {
@@ -166,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Setup carousels with new IDs
+    // Setup only the existing carousels
     setupCarousel('cert-wrapper', 'cert-prev-btn', 'cert-next-btn');
     setupCarousel('badge-wrapper', 'badge-prev-btn', 'badge-next-btn');
 });
@@ -376,4 +400,76 @@ document.addEventListener('DOMContentLoaded', function() {
     // Observe elements for animation
     const animatedElements = document.querySelectorAll('.scroll-animation');
     animatedElements.forEach(el => observer.observe(el));
+});
+
+// Lock user in login area until they interact - Updated with logout reset
+document.addEventListener('DOMContentLoaded', function() {
+    const loginContainer = document.getElementById('login');
+    let loginCompleted = false;
+
+    // Prevent all scrolling initially
+    function lockScroll() {
+        document.body.style.overflow = 'hidden';
+        document.body.style.height = '100vh';
+        
+        // Prevent scroll events
+        window.addEventListener('wheel', preventDefault, { passive: false });
+        window.addEventListener('touchmove', preventDefault, { passive: false });
+        window.addEventListener('keydown', preventScrollKeys, { passive: false });
+        
+        loginCompleted = false; // Reset login status
+    }
+
+    function unlockScroll() {
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        
+        // Remove scroll prevention
+        window.removeEventListener('wheel', preventDefault);
+        window.removeEventListener('touchmove', preventDefault);
+        window.removeEventListener('keydown', preventScrollKeys);
+        
+        loginCompleted = true;
+    }
+
+    function preventDefault(e) {
+        e.preventDefault();
+    }
+
+    function preventScrollKeys(e) {
+        const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40]; // space, page up/down, home, end, arrows
+        if (keys.includes(e.keyCode)) {
+            e.preventDefault();
+        }
+    }
+
+    // Start with scroll locked
+    lockScroll();
+
+    // Unlock scroll when user clicks "Sign In" button
+    const signInButton = document.querySelector('.login-btn');
+    if (signInButton) {
+        signInButton.addEventListener('click', function() {
+            unlockScroll();
+        });
+    }
+
+    // Handle logout button - reset scroll lock when pressed
+    const logoutButton = document.querySelector('.nav-logout-btn');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default navigation
+            
+            // Scroll to login section
+            const loginSection = document.getElementById('login');
+            if (loginSection) {
+                loginSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Wait for scroll to complete, then lock scroll
+                setTimeout(() => {
+                    lockScroll();
+                }, 800); // Adjust timing as needed
+            }
+        });
+    }
 });
