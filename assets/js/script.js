@@ -905,3 +905,49 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// About section animation restart functionality
+function restartAboutAnimations() {
+  const aboutSection = document.getElementById('about');
+  if (!aboutSection) return;
+  
+  // Get all animated elements in about section
+  const animatedElements = aboutSection.querySelectorAll('.scroll-animation');
+  
+  // Remove visible class to reset animations
+  animatedElements.forEach(element => {
+      element.classList.remove('visible');
+      // Force reflow
+      element.offsetHeight;
+  });
+  
+  // Re-add visible class with staggered timing
+  setTimeout(() => {
+      animatedElements.forEach((element, index) => {
+          setTimeout(() => {
+              element.classList.add('visible');
+          }, index * 150); // 150ms delay between each element
+      });
+  }, 100);
+}
+
+// Enhanced Intersection Observer for about section
+const aboutObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          // Add small delay to ensure section is fully visible
+          setTimeout(() => {
+              restartAboutAnimations();
+          }, 200);
+      }
+  });
+}, {
+  threshold: 0.3, // Trigger when 30% of about section is visible
+  rootMargin: '-50px 0px -50px 0px'
+});
+
+// Observe the about section
+const aboutSection = document.getElementById('about');
+if (aboutSection) {
+  aboutObserver.observe(aboutSection);
+}
