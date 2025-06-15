@@ -1019,3 +1019,150 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', toggleNavAndBtns);
     window.addEventListener('resize', toggleNavAndBtns);
 });
+
+// Add this to optimize animations and transitions
+document.addEventListener('DOMContentLoaded', function() {
+  // Lazy load images
+  const lazyImages = document.querySelectorAll('img.lazy');
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+  }
+});
+
+// Enhance project galleries with better interaction
+document.addEventListener('DOMContentLoaded', function() {
+  const projectGalleries = document.querySelectorAll('.project-gallery');
+  
+  projectGalleries.forEach(gallery => {
+    const images = gallery.querySelectorAll('.project-image');
+    let currentIndex = 0;
+    
+    // Add navigation controls for projects with multiple images
+    if (images.length > 1) {
+      const navControls = document.createElement('div');
+      navControls.className = 'gallery-nav';
+      
+      // Add dots for navigation
+      for (let i = 0; i < images.length; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'gallery-dot';
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          showImage(i);
+        });
+        navControls.appendChild(dot);
+      }
+      
+      gallery.appendChild(navControls);
+      
+      function showImage(idx) {
+        images.forEach((img, i) => {
+          if (i === idx) {
+            img.style.opacity = '1';
+            img.style.zIndex = '2';
+          } else {
+            img.style.opacity = '0';
+            img.style.zIndex = '1';
+          }
+        });
+        
+        // Update active dot
+        const dots = navControls.querySelectorAll('.gallery-dot');
+        dots.forEach((dot, i) => {
+          if (i === idx) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+        
+        currentIndex = idx;
+      }
+    }
+  });
+});
+
+// Fix the sticky navigation buttons functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const btnUp = document.getElementById('btn-up');
+  const btnHome = document.getElementById('btn-home');
+  const btnDown = document.getElementById('btn-down');
+  
+  // Define sections in order
+  const sections = ['about', 'resume', 'certification', 'projects', 'contact'];
+  
+  function getCurrentSectionIndex() {
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section) {
+        const sectionTop = section.offsetTop;
+        if (scrollPosition >= sectionTop) {
+          return i;
+        }
+      }
+    }
+    
+    return 0; // Default to first section
+  }
+  
+  if (btnUp) {
+    btnUp.addEventListener('click', function() {
+      const currentIndex = getCurrentSectionIndex();
+      
+      if (currentIndex > 0) {
+        const targetSection = document.getElementById(sections[currentIndex - 1]);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  }
+  
+  if (btnDown) {
+    btnDown.addEventListener('click', function() {
+      const currentIndex = getCurrentSectionIndex();
+      
+      if (currentIndex < sections.length - 1) {
+        const targetSection = document.getElementById(sections[currentIndex + 1]);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  }
+  
+  if (btnHome) {
+    btnHome.addEventListener('click', function() {
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+  
+  // Show/hide buttons based on scroll position
+  window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    const stickyBtns = document.querySelector('.sticky-nav-btns');
+    
+    if (scrollPosition > 300) {
+      stickyBtns.style.opacity = '1';
+    } else {
+      stickyBtns.style.opacity = '0';
+    }
+  });
+});
