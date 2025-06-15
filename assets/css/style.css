@@ -908,6 +908,26 @@ body.dark-mode .footer-link:hover {
     border: 5px solid #fff;
     background: #fff;
     z-index: 2;
+    transition: box-shadow 0.5s, border-color 0.3s, background 0.3s;
+}
+
+.about-profile-img:hover {
+    box-shadow: 0 0 12px 2px #ffb37b, 0 2px 8px rgba(0,0,0,0.10);
+    border-color: #e8491d;
+    background: #fffbe8;
+}
+
+body.dark-mode .about-profile-img {
+    background: #ffb37b;
+    border: 5px solid #23272f;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    transition: box-shadow 0.5s, border-color 0.3s, background 0.3s;
+}
+
+body.dark-mode .about-profile-img:hover {
+    box-shadow: 0 0 12px 2px #e8491d, 0 2px 8px rgba(0,0,0,0.14);
+    border-color: #ffb37b;
+    background: #2d2320;
 }
 
 .about-content {
