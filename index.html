@@ -5,10 +5,56 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Angelo Morales Portfolio</title>
         <link rel="icon" type="image/png" href="assets/pictures/Profile.png">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#e8491d',
+                            primaryLight: '#ffb37b',
+                            dark: '#23272f',
+                            light: '#ffffff'
+                        },
+                        fontFamily: {
+                            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                            serif: ['Times New Roman', 'Georgia', 'serif'],
+                            poppins: ['Poppins', 'ui-sans-serif', 'system-ui'],
+                        },
+                        animation: {
+                            'float-slow': 'float 15s linear infinite',
+                            'typewriter': 'typewriter 2s steps(25) forwards',
+                            'blink': 'blink 1s infinite'
+                        },
+                        keyframes: {
+                            float: {
+                                '0%': { transform: 'translateY(100vh) translateX(0px) rotate(0deg)', opacity: '0' },
+                                '10%': { opacity: '0.6' },
+                                '90%': { opacity: '0.6' },
+                                '100%': { transform: 'translateY(-100px) translateX(50px) rotate(360deg)', opacity: '0' }
+                            },
+                            typewriter: {
+                                from: { width: '0' },
+                                to: { width: '100%' }
+                            },
+                            blink: {
+                                '50%': { borderColor: 'transparent' }
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+
         <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+            rel="stylesheet">
     </head>
     <body>
         <!-- Particles -->
@@ -25,527 +71,940 @@
             <div class="particle"></div>
         </div>
         <!-- Navbar -->
-        <nav class="navbar">
-    <div class="nav-container">
-        <div class="nav-brand">
-            <img src="assets/pictures/Login/Picture.png" alt="Angelo" class="nav-avatar">
-            <span class="nav-title" style="font-family: 'Times New Roman', Times, serif;">Angelo Morales</span>
-        </div>
-        
-        <div class="nav-content">
-            <ul class="nav-links">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#resume" class="nav-link">Resume</a></li>
-                <li><a href="#certification" class="nav-link">Credentials</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            
-            <div class="nav-actions">
-                
-                <label class="switch">
-                    <input type="checkbox" id="toggle-mode">
-                    <span class="slider"></span>
-                </label>
-                <button class="nav-hamburger" id="nav-hamburger">
-                    <span></span><span></span><span></span>
-                </button>
-                <button class="nav-logout-btn">
-                <img src="assets/pictures/navigation/Exit-icon.svg" alt="logout">
-                </button>
+        <nav class="fixed top-0 w-full z-50 transition-all duration-300"
+            id="navbar">
+            <div
+                class="backdrop-blur-md bg-white/90 border-b border-gray-200/20 shadow-sm">
+                <div
+                    class="container mx-auto px-4 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="font-poppins text-xl font-semibold text-gray-800">
+                            <span class="text-primary">Angelo</span> Morales
+                        </span>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center gap-4">
+                        <a href="#home"
+                            class="px-3 py-2 rounded-md text-gray-700 hover:text-primary 
+                                      transition-all duration-200 font-medium relative group">
+                            <span>Home</span>
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="#about"
+                            class="px-3 py-2 rounded-md text-gray-700 hover:text-primary 
+                                      transition-all duration-200 font-medium relative group">
+                            <span>About</span>
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="#certification"
+                            class="px-3 py-2 rounded-md text-gray-700 hover:text-primary 
+                                            transition-all duration-200 font-medium relative group">
+                            <span>Credentials</span>
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="#projects"
+                            class="px-3 py-2 rounded-md text-gray-700 hover:text-primary 
+                                        transition-all duration-200 font-medium relative group">
+                            <span>Projects</span>
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="#contact"
+                            class="ml-4 px-6 py-2 bg-gradient-to-r from-primary to-primaryLight text-white 
+                                    font-medium rounded-md transition-all duration-300 hover:shadow-md hover:shadow-primary/20">
+                            Contact Me
+                        </a>
+                    </div>
+
+                    <!-- Mobile Hamburger Button -->
+                    <button id="nav-hamburger"
+                        class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-gray-50 rounded-md">
+                        <span
+                            class="w-5 h-0.5 bg-gray-800 rounded-full transition-all"></span>
+                        <span
+                            class="w-5 h-0.5 bg-gray-800 rounded-full transition-all"></span>
+                        <span
+                            class="w-5 h-0.5 bg-gray-800 rounded-full transition-all"></span>
+                    </button>
+                </div>
             </div>
-        </div>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div class="nav-mobile-menu" id="nav-mobile-menu">
-        <ul class="nav-mobile-links">
-            <li><a href="#about" class="nav-mobile-link">About</a></li>
-            <li><a href="#resume" class="nav-mobile-link">Resume</a></li>
-            <li><a href="#certification" class="nav-mobile-link">Credentials</a></li>
-            <li><a href="#projects" class="nav-mobile-link">Projects</a></li>
-            <li><a href="#contact" class="nav-mobile-link">Contact</a></li>
-        </ul>
-    </div>
-</nav>
-        <!-- Login Section -->
-        <div class="container login-container" id="login">
-            <div class="login-wrapper">
-                <div class="login-card">
-                    <div class="login-content">
-                        <img id="profile-img-login"
-                            src="assets/pictures/Login/Picture.png"
-                            alt="Profile Photo" class="profile-img">
-                        <h1>Hello, I'm Gelo</h1>
-                        <p>Software Developer | Backend Enthusiast</p>
-                        <form class="login-form" 
-                            autocomplete="off">
-                            <label for="login-username">
-                                <img src="assets/pictures/Login/User-Icon.svg"
-                                    alt="User Icon"> Username
-                            </label>
-                            <input type="text" id="login-username" name="username" placeholder="Angelo Montojo Morales" value="Angelo Montojo Morales" readonly>
-                            <label for="login-password">
-                                <img src="assets/pictures/Login/Lock-Icon.svg" alt="Lock Icon"> Password<input type="checkbox" id="show-password" >
-                            </label>
-                                <input type="password" id="login-password" name="username" placeholder="Admin123" value="Admin123" readonly>
-                            <button type="button" class="login-btn"
-                                onclick="window.location.href='#about'">
-                                Sign In</button>
-                        </form>
-                        <p>Welcome to my portfolio!</p>
+
+            <!-- Mobile Menu -->
+            <div id="nav-mobile-menu"
+                class="hidden bg-white/95 backdrop-blur-md shadow-lg py-5 border-b border-gray-100">
+                <div class="container mx-auto px-4 flex flex-col space-y-3">
+                    <a href="#home"
+                        class="px-4 py-3 rounded-md text-gray-700 hover:bg-gray-50 hover:text-primary
+                               transition-all duration-200 font-medium">Home</a>
+                    <a href="#about"
+                        class="px-4 py-3 rounded-md text-gray-700 hover:bg-gray-50 hover:text-primary
+                               transition-all duration-200 font-medium">About</a>
+                    <a href="#certification"
+                        class="px-4 py-3 rounded-md text-gray-700 hover:bg-gray-50 hover:text-primary
+                                      transition-all duration-200 font-medium">Credentials</a>
+                    <a href="#projects"
+                        class="px-4 py-3 rounded-md text-gray-700 hover:bg-gray-50 hover:text-primary
+                                  transition-all duration-200 font-medium">Projects</a>
+                    <a href="#contact"
+                        class="px-4 py-3 rounded-md text-gray-700 hover:bg-gray-50 hover:text-primary
+                                transition-all duration-200 font-medium">Contact</a>
+                </div>
+            </div>
+        </nav>
+        <!-- home Section -->
+        <section id="home"
+            class="min-h-screen flex items-center pt-20 pb-32 relative overflow-hidden">
+            <div class="absolute inset-0 -z-10 overflow-hidden">
+                <div
+                    class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/5 animate-pulse"></div>
+                <div
+                    class="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-primaryLight/5 animate-pulse"
+                    style="animation-delay: 1.5s"></div>
+
+                <div
+                    class="absolute top-20 right-10 text-xs text-gray-300 opacity-20 font-mono transform rotate-3">
+                    <pre>
+function backendDev() {
+  const skills = ['PHP', 'Laravel', 'MySQL'];
+  return skills.map(skill => optimize(skill));
+}
+            </pre>
+                </div>
+                <div
+                    class="absolute bottom-20 left-10 text-xs text-gray-300 opacity-20 font-mono transform -rotate-2">
+                    <pre>
+const developer = {
+  name: 'Angelo',
+  focus: 'Backend',
+  passion: 'Building scalable systems'
+};
+            </pre>
+                </div>
+            </div>
+
+            <!-- Home Content -->
+            <div class="container mx-auto px-4">
+                <div
+                    class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-3/5 space-y-6">
+                        <div
+                            class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-2">
+                            Software Developer
+                        </div>
+                        <h1
+                            class="text-5xl md:text-6xl font-bold text-gray-800 leading-tight">
+                            Creating <span class="relative">
+                                <span
+                                    class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryLight relative z-10">backend</span>
+                                <span
+                                    class="absolute inset-x-0 bottom-2 h-4 bg-primary/10 -z-0"></span>
+                            </span> solutions for modern problems
+                        </h1>
+
+                        <p class="text-lg text-gray-600 mt-6 max-w-lg">
+                            I build robust, scalable systems and APIs that power
+                            applications.
+                            Passionate about clean code, performance, and
+                            security.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4 mt-8">
+                            <a href="#projects"
+                                class="px-8 py-3.5 bg-primary text-white font-medium rounded-md 
+                                          shadow-lg shadow-primary/20 transform transition duration-300 
+                                          hover:scale-105 hover:shadow-xl hover:shadow-primary/30 flex items-center gap-2">
+                                <span>See My Work</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+
+                            <a href="#contact"
+                                class="px-8 py-3.5 bg-white text-gray-800 border border-gray-200
+                                           font-medium rounded-md transition duration-300 
+                                           hover:bg-gray-50 hover:shadow-md flex items-center gap-2">
+                                <span>Contact Me</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Tech badges -->
+                        <div class="pt-8">
+                            <p class="text-sm text-gray-500 mb-3">Tech I work
+                                with:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/CPlusPlus-Icon-Light.svg" alt="C++" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/css-Icon-Light.svg" alt="css" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Html-Icon-Light.svg" alt="html" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/git-Icon-Light.svg" alt="git" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Java-Icon-Light.svg" alt="Java" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Js-Icon-Light.svg" alt="JavaScript" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Laravel-Icon-Light.svg" alt="Laravel" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Php-Icon-Light.svg" alt="PHP" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-2/5 flex justify-center">
+                        <div class="relative">
+                            <div
+                                class="absolute inset-0 -m-6 rounded-2xl bg-gray-900 p-4 transform rotate-3 shadow-xl">
+                                <div class="text-xs text-primary/80 font-mono">
+                                    <div>// Developer Profile</div>
+                                    <div class="text-gray-400">class <span
+                                            class="text-primaryLight">Angelo</span>
+                                        {</div>
+                                    <div
+                                        class="pl-4 text-gray-400">constructor()
+                                        {</div>
+                                    <div class="pl-8 text-gray-400">this.<span
+                                            class="text-primary">role</span> =
+                                        <span
+                                            class="text-green-400">"Backend Developer"</span>;</div>
+                                    <div class="pl-8 text-gray-400">this.<span
+                                            class="text-primary">passion</span>
+                                        = <span
+                                            class="text-green-400">"Building scalable systems"</span>;</div>
+                                    <div class="pl-4 text-gray-400">}</div>
+                                    <div class="text-gray-400">}</div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="relative z-10 border-8 border-white rounded-2xl shadow-2xl overflow-hidden">
+                                <img src="assets/pictures/Profile.png"
+                                    alt="Angelo Morales"
+                                    class="w-64 h-64 object-cover">
+
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+                            </div>
+                            <div
+                                class="absolute -bottom-4 -right-4 w-24 h-24 bg-primaryLight/30 rounded-full blur-xl"></div>
+                            <div
+                                class="absolute -top-4 -left-4 w-16 h-16 bg-primary/30 rounded-full blur-lg"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <!-- About Section -->
-        <div class="container about-profile-wrapper" id="about">
-            <div class="about-card">
-                <img id="profile-img" src="assets/pictures/Profile.png"
-                    alt="Profile Photo" class="about-profile-img scroll-animation">
-                <h1 class="scroll-animation">Angelo Montojo Morales</h1>
-                <p class="scroll-animation">
-                    I am a Computer Science student from the University of Mindanao, deeply passionate about 
-                    <span class="highlight">software development</span>, <span class="highlight">databases</span>, 
-                    <span class="highlight">security</span>, and delivering effective technology solutions. My primary focus is on 
-                    <span class="highlight">backend development</span>, where I specialize in designing scalable logic, developing APIs, 
-                    and Designing Systems. 
-                </p>   
-                <p class="scroll-animation">
-                    I also possess foundational knowledge in IT operations, including 
-                    <span class="highlight">networking</span> and <span class="highlight">system maintenance</span>. For small sized projects, 
-                    I am adept at <span class="highlight">fullstack development</span>, transforming concepts into reliable, user-centric applications.
-                </p>
-                <p class="scroll-animation">
-                    Outside of coding, I enjoy PC building, 
-                    cycling, motor touring, 
-                    cooking, playing video games, and freedive. I'm always <span class="highlight">eager to learn</span>,
-                    <span class="highlight">collaborate</span>, and <span class="highlight">take on real-world challenges</span>.
-                </p>
+        <section id="about" class="min-h-screen py-24 px-4 bg-gradient-to-b from-gray-50 to-gray-100 flex items-center">
+            <div class="container mx-auto max-w-5xl">
+                <!-- About Header -->
+                <div class="mb-16 text-center">
+                    <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-3">About Me</span>
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800 font-poppins">
+                        Software Developer with a <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryLight">Passion for Scalability</span>
+                    </h1>
+                </div>
 
-                <h2 class="scroll-animation">My Core Tech Stack</h2>
-                <div class="tech-stack-images scroll-animation">
-                    <div class="tech-item">
-                        <img src="assets/pictures/Techstack/Html-Icon-Light.svg"
-                            alt="HTML5" class="tech-image">
+                <div class="flex flex-col md:flex-row gap-12 items-start">
+                    <div class="w-full md:w-2/5 space-y-8">
+                        <div class="relative animate-on-scroll">
+                            <!-- Background decorations -->
+                            <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 rounded-full blur-xl"></div>
+                            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primaryLight/5 rounded-full blur-xl"></div>
+
+                            <!-- Card with glow effect -->
+                            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden z-10 border border-gray-100">
+                                <!-- Profile Header -->
+                                <div class="h-24 bg-gradient-to-r from-primary to-primaryLight opacity-90"></div>
+
+                                <!-- Profile Image -->
+                                <div class="relative -mt-12 flex justify-center">
+                                    <div class="relative group">
+                                        <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-primaryLight rounded-full opacity-75 
+                                                    group-hover:opacity-100 blur-sm group-hover:blur-md transition duration-500"></div>
+                                        <img src="assets/pictures/Profile.png" alt="Profile Photo" 
+                                             class="relative w-24 h-24 rounded-full object-cover border-4 border-white z-10
+                                                    transition-all duration-500 group-hover:scale-105">
+                                    </div>
+                                </div>
+
+                                <!-- Profile Info -->
+                                <div class="px-6 py-6 text-center">
+                                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Angelo M. Morales</h2>
+                                    <p class="text-primary font-medium text-sm mb-4">Software Developer</p>
+
+                                    <!-- Key Stats -->
+                                    <div class="grid grid-cols-3 gap-4 py-4 border-t border-b border-gray-100 mb-6">
+                                        <div>
+                                            <span class="block text-xl font-bold text-gray-800">3+</span>
+                                            <span class="text-gray-500 text-xs">Years Coding</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-xl font-bold text-gray-800">4+</span>
+                                            <span class="text-gray-500 text-xs">Projects</span>
+                                        </div>
+                                        <div>
+                                            <span class="block text-xl font-bold text-gray-800">5+</span>
+                                            <span class="text-gray-500 text-xs">Certificates</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Connect Button -->
+                                    <a href="#contact" 
+                                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary to-primaryLight text-white rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:scale-105">
+                                        <span>Connect With Me</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tech-item">
-                        <img src="assets/pictures/Techstack/Css-Icon-Light.svg"
-                            alt="CSS3" class="tech-image">
+
+                    <div class="w-full md:w-3/5 space-y-8">
+                        <div class="space-y-5 text-gray-700">
+                            <p class="leading-relaxed animate-on-scroll">
+                                I'm a <span class="font-medium text-primary">Computer Science student</span> from the University of Mindanao, passionate about building robust digital solutions. My focus is on
+                                <span class="bg-primary/10 px-2 py-0.5 rounded font-medium">backend development</span>, where I design scalable systems,
+                                develop APIs, and optimize database performance.
+                            </p>
+
+                            <p class="leading-relaxed animate-on-scroll" style="animation-delay: 200ms">
+                                With skills in <span class="font-medium">PHP</span>, <span class="font-medium">Laravel</span>, and <span class="font-medium">MySQL</span>, I create solutions that are robust, secure, and scalable. I'm also proficient in
+                                <span class="bg-primary/10 px-2 py-0.5 rounded font-medium">IT operations</span>, including networking and system maintenance.
+                            </p>
+
+                            <p class="leading-relaxed animate-on-scroll" style="animation-delay: 400ms">
+                                Beyond coding, I enjoy PC building, cycling, and freediving. I'm constantly seeking new challenges and opportunities to grow as a developer.
+                            </p>
+                        </div>
+
+                        <!-- Tech Stack -->
+                        <div class="space-y-4">
+                            <h4 class="text-sm uppercase text-gray-500 tracking-wider mb-3">Main Tech Stack</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Php-Icon-Light.svg" alt="PHP" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Laravel-Icon-Light.svg" alt="Laravel" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Js-Icon-Light.svg" alt="js" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Html-Icon-Light.svg" alt="HTML" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                                <div class="tech-badge flex flex-col items-center justify-center py-4 px-2 bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                                    <img src="assets/pictures/Techstack/Css-Icon-Light.svg" alt="CSS" class="w-10 h-10 mb-2">
+                                    <span class="text-xs font-medium text-gray-700"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tech-item">
-                        <img src="assets/pictures/Techstack/Js-Icon-Light.svg"
-                            alt="JavaScript" class="tech-image">
-                    </div>
-                    <div class="tech-item">
-                        <img src="assets/pictures/Techstack/Php-Icon-Light.svg"
-                            alt="PHP" class="tech-image">
-                    </div>
-                    <div class="tech-item">
-                        <img
-                            src="assets/pictures/Techstack/Laravel-Icon-Light.svg"
-                            alt="Laravel" class="tech-image">
-                    </div>
+
                 </div>
             </div>
-            </div>
-        </div>
-
-        <!-- Resume Section -->
-        <div class="container" id="resume">
-            <p class="resume-actions">
-                <a href="assets/files/Morales-Resume.pdf" target="_blank"
-                    class="resume-btn">
-                    <img src="assets/pictures/External-Icon-Light.svg"
-                        alt="External Link Icon"> View External
-                </a>
-                <a href="assets/files/Morales-Resume.pdf" download
-                    class="resume-btn">
-                    <img src="assets/pictures/Download-Icon-Light.svg"
-                        alt="Download Icon"> Download Resume
-                </a>
-            </p>
-            <div class="resume-pdf-viewer" id="resume-pdf-viewer"
-                style="display: block;">
-                <iframe src="assets/files/Morales-Resume.pdf"
-                    width="100%" style="border:none; height:100%;"></iframe>
-            </div>
-        </div>
-
-        <!-- Certification Carousel -->
-        <div class="container" id="certification"> 
-            <h1>Certification  <a
-                            href="https://www.credly.com/users/angelo-morales.dad44d28"
-                            target="_blank" class="project-link">
-                            <img src="assets/pictures/Link-Icon-Light.svg"
-                                alt="Project Link" class="project-link-icon">
+        </section>
+        <!-- Certification Section -->
+        <section id="certification" class="min-h-screen py-24 px-4 bg-gray-50 dark:bg-gray-900 flex items-center">
+            <div class="container mx-auto max-w-5xl">
+                <div class="mb-16 text-center relative">
+                    <div class="inline-block">
+                        <span class="absolute -inset-1 rounded-lg blur-xl bg-gradient-to-r from-primary/20 to-primaryLight/20"></span>
+                        <h1 class="relative text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white font-poppins">
+                            My <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryLight">Credentials</span>
+                        </h1>
+                    </div>
+                    
+                    <div class="flex items-center justify-center mt-4">
+                        <span class="h-0.5 w-16 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600"></span>
+                        <a href="https://www.credly.com/users/angelo-morales.dad44d28" 
+                           target="_blank"
+                           class="mx-4 p-2 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg hover:bg-primary/5 
+                                  dark:hover:bg-primary/20 transition-all duration-300 group relative">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-primary/40 to-primaryLight/40 opacity-0 
+                                   group-hover:opacity-100 blur-md -z-10 transition-opacity duration-300"></div>
+                        <img src="assets/pictures/Icons/Link-Icon-Dark.svg" alt="Credly Profile" 
+                             class="w-6 h-6 group-hover:scale-110 transition-transform">
                         </a>
-
-            </h1><br>
-            <div class="certificates-carousel">
-                <button class="carousel-btn left-btn" id="cert-prev-btn"
-                    aria-label="Previous">&#9664;</button>
-                <div class="certificates-wrapper" id="cert-wrapper">
-                    <img
-                        src="assets/pictures/Certifcations/it-specialist-databases.png"
-                        alt="IT Specialist Certificate"
-                        class="certificate-image">
-                    <img
-                        src="assets/pictures/Certifcations/it-specialist-html-and-css.png"
-                        alt="IT Specialist Certificate"
-                        class="certificate-image">
-                    <img
-                        src="assets/pictures/Certifcations/it-specialist-network-security.png"
-                        alt="IT Specialist Certificate"
-                        class="certificate-image">
+                        <span class="h-0.5 w-16 bg-gradient-to-r from-gray-300 to-gray-200 dark:from-gray-600 dark:to-gray-700"></span>
+                    </div>
                 </div>
-                <button class="carousel-btn right-btn" id="cert-next-btn"
-                    aria-label="Next">&#9654;</button>
+
+                <div class="mb-10 flex justify-center">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-1 inline-flex">
+                        <button class="cert-tab-btn active px-4 py-2 rounded-md text-sm font-medium transition-all" data-target="professional-certs">
+                            Certifications
+                        </button>
+                        <button class="cert-tab-btn px-4 py-2 rounded-md text-sm font-medium transition-all" data-target="online-certs">
+                            Certificates
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certificate Displays -->
+                <div class="relative">
+                    <!-- Professional Certifications -->
+                    <div id="professional-certs" class="cert-tab-content active">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/Certifcations/it-specialist-databases.png"
+                                         alt="IT Specialist Certificate - Databases"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">IT Specialist: Databases</h3>
+                                        <p class="text-sm text-gray-200">Certified by Certiport</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">SQL</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Database Design</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/Certifcations/it-specialist-html-and-css.png"
+                                         alt="IT Specialist Certificate - HTML and CSS"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">IT Specialist: HTML and CSS</h3>
+                                        <p class="text-sm text-gray-200">Certified by Certiport</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">Web Development</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Frontend</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/Certifcations/it-specialist-network-security.png"
+                                         alt="IT Specialist Certificate - Network Security"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">IT Specialist: Network Security</h3>
+                                        <p class="text-sm text-gray-200">Certified by Certiport</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">Cybersecurity</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Networking</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificates -->
+                    <div id="online-certs" class="cert-tab-content hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/CertificateOnline/IBMCybersecurityFundamentalsCert.png"
+                                         alt="IBM Cybersecurity Fundamentals"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">Cybersecurity Fundamentals</h3>
+                                        <p class="text-sm text-gray-200">IBM</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">Security</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Risk Management</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/CertificateOnline/IBMWebDevelopmentFundamentals.png"
+                                         alt="IBM Web Development Fundamentals"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">Web Development Fundamentals</h3>
+                                        <p class="text-sm text-gray-200">IBM</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">Web</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Frontend</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/CertificateOnline/CyberThreatManagementCert.png"
+                                         alt="Cyber Threat Management"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">Cyber Threat Management</h3>
+                                        <p class="text-sm text-gray-200">IBM</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">Security</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Threat Analysis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/CertificateOnline/AIFundamentals.png"
+                                         alt="Cyber Threat Management"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">Cyber Threat Management</h3>
+                                        <p class="text-sm text-gray-200">IBM</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">Security</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Threat Analysis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+  
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/CertificateOnline/NetworkDefenseCert.png"
+                                         alt="Cyber Threat Management"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">NetworkDefenseCert</h3>
+                                        <p class="text-sm text-gray-200">Cisco</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">Security</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Threat Analysis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+           
+                            <div class="certificate-card group">
+                                <div class="relative overflow-hidden rounded-xl">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10"></div>
+                                    <img src="assets/pictures/CertificateOnline/IBMProjectManagementFundamentals.png"
+                                         alt="Cyber Threat Management"
+                                         class="w-full transition-transform duration-500 group-hover:scale-110">
+                                
+                                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-20 transform translate-y-2 opacity-0 
+                                                group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                        <h3 class="text-lg font-bold">Project Management Fundamentals</h3>
+                                        <p class="text-sm text-gray-200">IBM</p>
+                                        <div class="mt-3">
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md">Project Management</span>
+                                            <span class="inline-block px-2 py-1 text-xs font-medium bg-primary/80 rounded-md ml-1">Agile</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <br><br><br>
+        </section>
 
-            <!--<h1>Certificate</h1><br>
-            <div class="certificates-carousel">
-                <button class="carousel-btn left-btn" id="certs-prev-btn" aria-label="Previous">&#9664;</button>
-                <div class="certificates-wrapper" id="certs-wrapper">
-                --insert pictures--
-                </div>
-                <button class="carousel-btn right-btn" id="certs-next-btn" aria-label="Next">&#9654;</button>
-           </div>-->
-
-            <h1>Certificate</h1><br>
-            <div class="certificates-carousel">
-                <button class="carousel-btn left-btn" id="badge-prev-btn"
-                    aria-label="Previous">&#9664;</button>
-                <div class="certificates-wrapper" id="badge-wrapper">
-                    <img
-                        src="assets/pictures/CertificateOnline/IBMCybersecurityFundamentalsCert.png"
-                        alt="Cybersecurity Fundamentals"
-                        class="certificate-image">
-                    <img
-                        src="assets/pictures/CertificateOnline/IBMWebDevelopmentFundamentals.png"
-                        alt="Web Development Fundamentals"
-                        class="certificate-image">
-                    <img
-                        src="assets/pictures/CertificateOnline/CyberThreatManagementCert.png"
-                        alt="Cyber Threat Management" class="certificate-image">
-                    <img
-                        src="assets/pictures/CertificateOnline/NetworkDefenseCert.png"
-                        alt="Network Defence" class="certificate-image">
-                    <img
-                        src="assets/pictures/CertificateOnline/IBMProjectManagementFundamentals.png"
-                        alt="Project Management Fundamentals"
-                        class="certificate-image">
-                    <img
-                        src="assets/pictures/CertificateOnline/AIFundamentals.png"
-                        alt="Project Management Fundamentals"
-                        class="certificate-image">
-                </div>
-                <button class="carousel-btn right-btn" id="badge-next-btn"
-                    aria-label="Next">&#9654;</button>
-            </div>
-
-        </div>
         <!-- Projects Section -->
-        <div class="container" id="projects">
-            <!-- Experience Projects Section -->
-            <!--<div class="container" id="projects">
-                <h1>Experience Projects</h1>
-                <div class="projects-list">
-                </div>-->
-            <!-- Intern Projects Section -->
-            <!--<div class="container" id="projects">
-                <h1>Intern Projects</h1>
-                <div class="projects-list">
-                </div>-->
-            <!-- My Projects -->
-            <h1>My Projects <a
-                            href="https://github.com/TheRealAngelo"
-                            target="_blank" class="project-link">
-                            <img src="assets/pictures/Link-Icon-Light.svg"
-                                alt="Project Link" class="project-link-icon">
-                        </a></h1>
-            <div class="projects-list">
-
-                <!-- Grade View Portal -->
-                <div class="project">
-                    <div class="project-content">
-                        <h2>Grade View Portal</h2>
-                        <div class="project-gallery open"
-                            id="gradeview-gallery">
-                            <img
-                                src="assets/pictures/GradeViewSystem/GradeViewLogin.png"
-                                alt="Grade View Portal Screenshot 1"
-                                class="project-image">
-                            <img
-                                src="assets/pictures/GradeViewSystem/GradeViewStudDashBoard.png"
-                                alt="Grade View Portal Screenshot 2"
-                                class="project-image hover-image">
-                        </div>
-                        <p style="margin:0.5em 0 0.5em 0; font-weight:500;">
-                            <span style="color:#e8491d;">A student portal system
-                                for secure grade viewing and analytics.</span>
-                        </p>
-                        <ul style="margin:0 0 0.5em 1em; font-size:0.98em;">
-                            <li>Role-based authentication (Admin/Student)</li>
-                            <li>Grade management and analytics dashboard</li>
-                            <li>Excel export and import for Grades</li>
-                        </ul>
-                    </div>
-                    <div class="project-actions">
-                        <div class="tech-stack">
-                            <span class="tech-badge">CSS</span>
-                            <span class="tech-badge">HTML</span>
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">MySQL</span>
-                        </div>
-                    </div>
-                    <p>
-                        <a
-                            href="https://github.com/TheRealAngelo/GradeViewPortal"
-                            target="_blank" class="project-link">
-                            <img src="assets/pictures/Link-Icon-Light.svg"
-                                alt="Project Link" class="project-link-icon">
-                        </a>
-                        Grade View Portal
-                    </p>
+<section id="projects" class="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto max-w-5xl">
+        <div class="mb-16 text-center relative">
+            <div class="inline-block">
+                <span class="absolute -inset-1 rounded-lg blur-xl bg-gradient-to-r from-primary/20 to-primaryLight/20"></span>
+                <h1 class="relative text-3xl md:text-4xl font-bold text-center text-gray-900 font-poppins">
+                    My <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryLight">Projects</span>
+                </h1>
+                <div class="flex items-center justify-center mt-4">
+                    <span class="h-0.5 w-16 bg-gradient-to-r from-gray-200 to-gray-300"></span>
+                    <a href="https://github.com/TheRealAngelo" target="_blank"
+                        class="mx-4 p-2 rounded-full bg-white shadow-md hover:shadow-lg hover:bg-primary/5 
+                              transition-all duration-300 group relative">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-primary/40 to-primaryLight/40 opacity-0 
+                                   group-hover:opacity-100 blur-md -z-10 transition-opacity duration-300"></div>
+                        <img src="assets/pictures/Icons/Link-Icon-Light.svg" alt="GitHub Profile" 
+                            class="w-6 h-6 group-hover:scale-110 transition-transform">
+                    </a>
+                    <span class="h-0.5 w-16 bg-gradient-to-r from-gray-300 to-gray-200"></span>
                 </div>
-
-                <!-- Commission Tracker System -->
-                <div class="project">
-                    <div class="project-content">
-                        <h2>Commission Tracker</h2>
-                        <div class="project-gallery open"
-                            id="commission-gallery">
-                            <img
-                                src="assets/pictures/Commission/CommissionLogin.png"
-                                alt="Commission Tracker Screenshot 1"
-                                class="project-image">
-                            <img
-                                src="assets/pictures/Commission/CommissionDashboard.png"
-                                alt="Commission Tracker Screenshot 2"
-                                class="project-image hover-image">
-                        </div>
-                        <p style="margin:0.5em 0 0.5em 0; font-weight:500;">
-                            <span style="color:#e8491d;">A web-based system for
-                                tracking and managing sales commissions for
-                                teams and individuals.</span>
-                        </p>
-                        <ul style="margin:0 0 0.5em 1em; font-size:0.98em;">
-                            <li>Automated commission calculations</li>
-                            <li>Role-based access for managers and agents</li>
-                            <li>Dashboard with performance
-                                analytics</li>
-                        </ul>
-                    </div>
-                    <div class="project-actions">
-                        <div class="tech-stack">
-                            <span class="tech-badge">Laravel PHP</span>
-                            <span class="tech-badge">Tailwind CSS</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">JavaScript</span>
-                        </div>
-                    </div>
-                    <p>
-                        <a
-                            href="https://github.com/TheRealAngelo/commission_tracker_system"
-                            target="_blank" class="project-link">
-                            <img src="assets/pictures/Link-Icon-Light.svg"
-                                alt="Project Link" class="project-link-icon">
-                        </a>
-                        Commission Tracker System
-                    </p>
-                </div>
-
-                <!-- Shoppcie -->
-                <div class="project">
-                    <div class="project-content">
-                        <h2>Shoppcie</h2>
-                        <div class="project-gallery open"
-                            id="ecommerce-gallery">
-                            <img
-                                src="assets/pictures/Shoppcie/Ecommerce1.png"
-                                alt="ecommerce Screenshot 1"
-                                class="project-image">
-                            <img
-                                src="assets/pictures/Shoppcie/Ecommerce2.png"
-                                alt="ecommerce Screenshot 2"
-                                class="project-image hover-image">
-                        </div>
-                        <p style="margin:0.5em 0 0.5em 0; font-weight:500;">
-                            <span style="color:#e8491d;">A simple e-commerce
-                                platform for online shopping and order
-                                management.</span>
-                        </p>
-                        <ul style="margin:0 0 0.5em 1em; font-size:0.98em;">
-                            <li>Product catalog with search and filter</li>
-                            <li>Shopping cart and checkout process</li>
-                            <li>Order history and management</li>
-                        </ul>
-                    </div>
-                    <div class="project-actions">
-                        <div class="tech-stack">
-                            <span class="tech-badge">CSS</span>
-                            <span class="tech-badge">HTML</span>
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">MySQL</span>
-                        </div>
-                    </div>
-                    <p>
-                        <a href="https://github.com/TheRealAngelo/"
-                            target="_blank" class="project-link">
-                            <img src="assets/pictures/Link-Icon-Light.svg"
-                                alt="Project Link" class="project-link-icon">
-                        </a>
-                        Shoppcie eCommerce 
-                    </p>
-                </div>
-
-                <!-- BurgerJoint -->
-                <div class="project">
-                    <div class="project-content">
-                        <h2>BurgerJoint</h2>
-                        <div class="project-gallery open"
-                            id="BurgerJoint-gallery">
-                            <img
-                                src="assets/pictures/BurgerJoint/BurgerJoint.png"
-                                alt="BurgerJoint Screenshot 1"
-                                class="project-image">
-                            <img
-                                src="assets/pictures/BurgerJoint/BurgerJointMenu.png"
-                                alt="BurgerJoint Screenshot 2"
-                                class="project-image hover-image">
-                        </div>
-                        <p style="margin:0.5em 0 0.5em 0; font-weight:500;">
-                            <span style="color:#e8491d;">A simple kiosk
-                                platform for local order menu
-                                management.</span>
-                        </p>
-                        <ul style="margin:0 0 0.5em 1em; font-size:0.98em;">
-                            <li>Interactive catalog with filter</li>
-                            <li>Order menu and checkout process</li>
-                            <li>Efficient order tracking and management tools</li>
-                        </ul>
-                    </div>
-                    <div class="project-actions">
-                        <div class="tech-stack">
-                            <span class="tech-badge">CSS</span>
-                            <span class="tech-badge">HTML</span>
-                            <span class="tech-badge">PHP</span>
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">MySQL</span>
-                        </div>
-                    </div>
-                    <p>
-                        <a href="https://github.com/TheRealAngelo/"
-                            target="_blank" class="project-link">
-                            <img src="assets/pictures/Link-Icon-Light.svg"
-                                alt="Project Link" class="project-link-icon">
-                        </a>
-                        BurgerJoint kiosk 
-                    </p>
-                </div>
-                <!--
-                Arduino
-                <div class="project">
-                    <div class="project-content">
-                        <h2>Chicken Rover</h2>
-                        <div class="project-gallery open"
-                            id="arduino-gallery">
-                            <img
-                                src="assets/pictures/Arduino/arduinoposter.png"
-                                alt="arduino Screenshot 1"
-                                class="project-image">
-                            <img
-                                src="assets/pictures/Arduino/arduinoactual.png"
-                                alt="arduino Screenshot 2"
-                                class="project-image hover-image">
-                        </div>
-                        <p style="margin:0.5em 0 0.5em 0; font-weight:500;">
-                            <span style="color:#e8491d;">An Arduino-powered
-                                autonomous rover for educational robotics and
-                                sensor integration.</span>
-                        </p>
-                        <ul style="margin:0 0 0.5em 1em; font-size:0.98em;">
-                            <li>Obstacle avoidance using ultrasonic sensors</li>
-                            <li>Remote/manual and autonomous modes</li>
-                            <li>Custom PCB and wiring</li>
-                        </ul>
-                    </div>
-                    <div class="project-actions">
-                        <div class="tech-stack">
-                            <span class="tech-badge">C++</span>
-                            <span class="tech-badge">Arduino</span>
-                            <span class="tech-badge">Electronics</span>
-                            <span class="tech-badge">DIY</span>
-                            <span class="tech-badge">Sensors</span>
-                        </div>
-                    </div>
-                    <p>
-                        <a href="https://github.com/TheRealAngelo/"
-                            target="_blank" class="project-link">
-                            <img src="assets/pictures/Link-Icon-Light.svg"
-                                alt="Project Link" class="project-link-icon">
-                        </a>
-                        Chicken Rover Arduino 
-                    </p>
-                </div>
-                -->
-
             </div>
         </div>
-        <div id="spotlight-cursor"></div>
 
-        <!-- Sticky Navigation Buttons -->
-        <div class="sticky-nav-btns" id="sticky-nav-btns">
-            <button class="sticky-btn" id="btn-up"
-                title="Scroll Up"><img
-                    src="assets/pictures/navigation/Double-Arrow-Up-Icon.svg"
-                    alt="up" style="height: 1em; width: auto;"></button>
-            <button class="sticky-btn" id="btn-home"
-                title="Go Home"><img
-                    src="assets/pictures/navigation/House-Icon.png" alt="home"
-                    style="height: 1em; width: auto;"></button>
-            <button class="sticky-btn" id="btn-down"
-                title="Scroll Down"><img
-                    src="assets/pictures/navigation/Double-Arrow-Down-Icon.svg"
-                    alt="down" style="height: 1em; width: auto;"></button>
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Grade View Portal -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl relative">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-b from-primary to-primaryLight opacity-80 -rotate-45 translate-x-8 -translate-y-8 group-hover:translate-x-6 group-hover:-translate-y-6 transition-all duration-500"></div>
+                
+                <div class="relative h-56 overflow-hidden">
+                    <div class="project-gallery" id="gradeview-gallery">
+                        <img src="assets/pictures/GradeViewSystem/GradeViewLogin.png"
+                            alt="Grade View Portal Screenshot"
+                            class="project-image w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="assets/pictures/GradeViewSystem/GradeViewStudDashBoard.png"
+                            alt="Grade View Portal Dashboard"
+                            class="project-image w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    
+                    <div class="absolute top-4 left-4 py-1.5 px-4 bg-gradient-to-r from-primary to-primaryLight text-white text-xs font-bold rounded-lg shadow-md backdrop-blur-sm">
+                        Web App
+                    </div>
+                </div>
 
-        <!-- Scripts -->
-        <script src="assets/js/script.js"></script>
-       
-        <!-- Footer -->
-<footer class="footer-main" id="contact">
-    <div class="footer-content">
-        <div class="footer-profile">
-            <img src="assets/pictures/Profile.png" alt="Profile" class="footer-profile-img">
-            <h2>Let's Connect!</h2>
-            <p>Open to development roles and eager to contribute, learn, and grow professionally.</p>
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
+                        Grade View Portal
+                        <div class="ml-2 h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
+                    </h2>
+
+                    <p class="text-primary font-medium mb-4">
+                        A student portal system for secure grade viewing and analytics.
+                    </p>
+
+                    <ul class="mb-6 text-gray-600 text-sm space-y-2 pl-5 list-disc">
+                        <li>Role-based authentication (Admin/Student)</li>
+                        <li>Grade management and analytics dashboard</li>
+                        <li>Excel export and import for Grades</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">HTML</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">CSS</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">PHP</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">JavaScript</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">MySQL</span>
+                    </div>
+
+                    <a href="https://github.com/TheRealAngelo/GradeViewPortal" target="_blank"
+                        class="inline-flex items-center px-6 py-3 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-primary transition-all duration-300 transform group-hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <span class="relative">
+                            <span class="block">View on GitHub</span>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300 delay-100"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Commission Tracker -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl relative">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-b from-primary to-primaryLight opacity-80 -rotate-45 translate-x-8 -translate-y-8 group-hover:translate-x-6 group-hover:-translate-y-6 transition-all duration-500"></div>
+                
+                <div class="relative h-56 overflow-hidden">
+                    <div class="project-gallery"
+                        id="commission-gallery">
+                        <img src="assets/pictures/Commission/CommissionLogin.png"
+                            alt="Commission Tracker Screenshot"
+                            class="project-image w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="assets/pictures/Commission/CommissionDashboard.png"
+                            alt="Commission Tracker Dashboard"
+                            class="project-image w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    
+                    <div class="absolute top-4 left-4 py-1.5 px-4 bg-gradient-to-r from-primary to-primaryLight text-white text-xs font-bold rounded-lg shadow-md backdrop-blur-sm">
+                        Laravel App
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
+                        Commission Tracker
+                        <div class="ml-2 h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
+                    </h2>
+
+                    <p class="text-primary font-medium mb-4">
+                        A web-based system for tracking and managing sales commissions.
+                    </p>
+
+                    <ul class="mb-6 text-gray-600 text-sm space-y-2 pl-5 list-disc">
+                        <li>Automated commission calculations</li>
+                        <li>Role-based access for managers and agents</li>
+                        <li>Dashboard with performance analytics</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">Laravel PHP</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">Tailwind CSS</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">MySQL</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">JavaScript</span>
+                    </div>
+
+                    <a href="https://github.com/TheRealAngelo/commission_tracker_system" target="_blank"
+                        class="inline-flex items-center px-6 py-3 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-primary transition-all duration-300 transform group-hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <span class="relative">
+                            <span class="block">View on GitHub</span>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300 delay-100"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Shoppcie -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl relative">
+ 
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-b from-primary to-primaryLight opacity-80 -rotate-45 translate-x-8 -translate-y-8 group-hover:translate-x-6 group-hover:-translate-y-6 transition-all duration-500"></div>
+                
+                <div class="relative h-56 overflow-hidden">
+                    <div class="project-gallery" id="ecommerce-gallery">
+                        <img src="assets/pictures/Shoppcie/Ecommerce1.png"
+                            alt="Shoppcie Screenshot"
+                            class="project-image w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="assets/pictures/Shoppcie/Ecommerce2.png"
+                            alt="Shoppcie Product Page"
+                            class="project-image w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    
+                    <div class="absolute top-4 left-4 py-1.5 px-4 bg-gradient-to-r from-primary to-primaryLight text-white text-xs font-bold rounded-lg shadow-md backdrop-blur-sm">
+                        eCommerce
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
+                        Shoppcie
+                        <div class="ml-2 h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
+                    </h2>
+
+                    <p class="text-primary font-medium mb-4">
+                        A simple e-commerce platform for online shopping and order management.
+                    </p>
+
+                    <ul class="mb-6 text-gray-600 text-sm space-y-2 pl-5 list-disc">
+                        <li>Product catalog with search and filter</li>
+                        <li>Shopping cart and checkout process</li>
+                        <li>Order history and management</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">HTML</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">CSS</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">PHP</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">JavaScript</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">MySQL</span>
+                    </div>
+
+                    <a href="https://github.com/TheRealAngelo/" target="_blank"
+                        class="inline-flex items-center px-6 py-3 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-primary transition-all duration-300 transform group-hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <span class="relative">
+                            <span class="block">View on GitHub</span>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300 delay-100"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- BurgerJoint -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 transform transition duration-500 hover:-translate-y-2 hover:shadow-xl relative">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-b from-primary to-primaryLight opacity-80 -rotate-45 translate-x-8 -translate-y-8 group-hover:translate-x-6 group-hover:-translate-y-6 transition-all duration-500"></div>
+                
+                <div class="relative h-56 overflow-hidden">
+                    <div class="project-gallery"
+                        id="BurgerJoint-gallery">
+                        <img src="assets/pictures/BurgerJoint/BurgerJoint.png"
+                            alt="BurgerJoint Screenshot"
+                            class="project-image w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="assets/pictures/BurgerJoint/BurgerJointMenu.png"
+                            alt="BurgerJoint Menu"
+                            class="project-image w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    
+                    <div class="absolute top-4 left-4 py-1.5 px-4 bg-gradient-to-r from-primary to-primaryLight text-white text-xs font-bold rounded-lg shadow-md backdrop-blur-sm">
+                        Kiosk App
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
+                        BurgerJoint
+                        <div class="ml-2 h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
+                    </h2>
+
+                    <p class="text-primary font-medium mb-4">
+                        A simple kiosk platform for local order menu management.
+                    </p>
+
+                    <ul class="mb-6 text-gray-600 text-sm space-y-2 pl-5 list-disc">
+                        <li>Interactive catalog with filter</li>
+                        <li>Order menu and checkout process</li>
+                        <li>Efficient order tracking and management tools</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">HTML</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">CSS</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">PHP</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">JavaScript</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium border border-gray-200 hover:bg-gray-200 transition-colors">MySQL</span>
+                    </div>
+
+                    <a href="https://github.com/TheRealAngelo/" target="_blank"
+                        class="inline-flex items-center px-6 py-3 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-primary transition-all duration-300 transform group-hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <span class="relative">
+                            <span class="block">View on GitHub</span>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300 delay-100"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
-        
-        <div class="footer-links">
-            <a href="https://www.facebook.com/angelo.m.morales.9" target="_blank" class="footer-link">
-                <img src="assets/pictures/facebook-icon.svg" alt="Facebook" class="footer-icon">
-                <span>Facebook</span>
-            </a>
-            <a href="https://github.com/TheRealAngelo" target="_blank" class="footer-link">
-                <img src="assets/pictures/github-icon.svg" alt="GitHub" class="footer-icon">
-                <span>GitHub</span>
-            </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=morales.angelo2000@gmail.com" target="_blank" class="footer-link">
-                <img src="assets/pictures/email-icon.svg" alt="Email" class="footer-icon">
-                <span>Email</span>
-            </a>
-            <a href="tel:+639987523614" class="footer-link">
-                <img src="assets/pictures/phone-icon.svg" alt="Phone" class="footer-icon">
-                <span>Call</span>
-            </a>
-        </div>
-    <p>&copy; 2025 Angelo Morales. All rights reserved.</p>
     </div>
-</footer>
+</section>
+        <!-- Footer-->
+        <footer class="relative bg-gray-900 text-white pt-24 pb-12 px-4 overflow-hidden footer-main" id="contact">
+            <div class="container mx-auto max-w-5xl">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primaryLight opacity-80"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                        <div class="relative mb-4 group">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-primaryLight rounded-full opacity-70 
+                                        group-hover:opacity-100 blur-sm group-hover:blur transition duration-300"></div>
+                            <img src="assets/pictures/Profile.png" alt="Profile"
+                                 class="relative w-20 h-20 rounded-full object-cover border-2 border-white 
+                                        transition-transform duration-500 hover:rotate-6 hover:scale-110">
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-2 font-poppins">Let's Connect!</h2>
+                        <p class="text-gray-300 max-w-xs mb-6">Open to development roles and eager to contribute, learn, and grow professionally.</p>
+                        <div class="flex gap-3 justify-center md:justify-start">
+                            <a href="https://www.facebook.com/angelo.m.morales.9"
+                               target="_blank"
+                               aria-label="Facebook"
+                               class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-all duration-300">
+                                <img src="assets/pictures/Icons/facebook-icon.svg" alt="Facebook" class="w-5 h-5">
+                            </a>
+                            <a href="https://github.com/TheRealAngelo"
+                               target="_blank"
+                               aria-label="GitHub"
+                               class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-all duration-300">
+                                <img src="assets/pictures/Icons/github-icon.svg" alt="GitHub" class="w-5 h-5">
+                            </a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=morales.angelo2000@gmail.com"
+                               target="_blank"
+                               aria-label="Email"
+                               class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-all duration-300">
+                                <img src="assets/pictures/Icons/email-icon.svg" alt="Email" class="w-5 h-5">
+                            </a>
+                            <a href="tel:+639987523614"
+                               aria-label="Phone"
+                               class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-all duration-300">
+                                <img src="assets/pictures/Icons/phone-icon.svg" alt="Phone" class="w-5 h-5">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resume Section-->
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 hover:border-primary/30 transition-all shadow-lg">
+                        <div class="flex items-center mb-5">
+                            <div class="bg-primary/20 p-3 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-white">Resume</h3>
+                                <p class="text-gray-300 text-sm mt-1">View or download my resume to learn more about my education, work experience, and skills.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                            <a href="assets/files/Morales-Resume.pdf" target="_blank"
+                               class="flex-1 inline-flex items-center justify-center px-5 py-3 bg-gray-700/70 
+                                 text-white font-medium rounded-lg hover:bg-gray-700
+                                 transition-all duration-300 hover:shadow-md group">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <span>View Resume</span>
+                            </a>
+                            <a href="assets/files/Morales-Resume.pdf" download
+                               class="flex-1 inline-flex items-center justify-center px-5 py-3 bg-gradient-to-r from-primary to-primaryLight 
+                                 text-white font-medium rounded-lg transform transition duration-300 
+                                 hover:shadow-lg hover:shadow-primary/30">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                <span>Download CV</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-16 pt-8 border-t border-white/10 text-center text-gray-400">
+                    <p>&copy; 2025 Angelo Morales. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script src="assets/js/script.js"></script>
     </body>
 </html>
