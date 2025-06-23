@@ -22,6 +22,68 @@
     opacity: 1;
 }
 
+/* Scroll animation classes */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animations for sections */
+.animate-delay-100 { transition-delay: 100ms; }
+.animate-delay-200 { transition-delay: 200ms; }
+.animate-delay-300 { transition-delay: 300ms; }
+.animate-delay-400 { transition-delay: 400ms; }
+.animate-delay-500 { transition-delay: 500ms; }
+
+/* Animation variations */
+.animate-fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.animate-fade-in.animated {
+    opacity: 1;
+}
+
+.animate-scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-scale-in.animated {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.animate-slide-left {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-slide-left.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-slide-right {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-slide-right.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 /* Staggered animations for elements */
 .about-card h1 {
     transition-delay: 0.2s;
@@ -55,113 +117,44 @@
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
-    opacity: 0.6;
-    animation: float-up 15s infinite linear;
-    background: rgba(232, 73, 29, 0.2); /* Use your primary color with transparency */
-    box-shadow: 0 0 8px rgba(232, 73, 29, 0.1);
-}
-
-.particle:nth-child(odd) {
-    background: rgba(255, 179, 123, 0.2); /* Use your primary-light color with transparency */
-    box-shadow: 0 0 10px rgba(255, 179, 123, 0.1);
-}
-
-.particle:nth-child(1) {
-    width: 16px;
-    height: 16px;
-    left: 10%;
-    animation-delay: 0s;
-    animation-duration: 12s;
-}
-
-.particle:nth-child(2) {
-    width: 24px;
-    height: 24px;
-    left: 20%;
-    animation-delay: 2s;
-    animation-duration: 18s;
-}
-
-.particle:nth-child(3) {
-    width: 12px;
-    height: 12px;
-    left: 30%;
-    animation-delay: 4s;
-    animation-duration: 14s;
-}
-
-.particle:nth-child(4) {
-    width: 20px;
-    height: 20px;
-    left: 40%;
-    animation-delay: 6s;
-    animation-duration: 16s;
-}
-
-.particle:nth-child(5) {
-    width: 16px;
-    height: 16px;
-    left: 50%;
-    animation-delay: 8s;
-    animation-duration: 20s;
-}
-
-.particle:nth-child(6) {
-    width: 28px;
-    height: 28px;
-    left: 60%;
-    animation-delay: 10s;
-    animation-duration: 15s;
-}
-
-.particle:nth-child(7) {
-    width: 12px;
-    height: 12px;
-    left: 70%;
-    animation-delay: 1s;
-    animation-duration: 17s;
-}
-
-.particle:nth-child(8) {
-    width: 20px;
-    height: 20px;
-    left: 80%;
-    animation-delay: 3s;
-    animation-duration: 19s;
-}
-
-.particle:nth-child(9) {
-    width: 16px;
-    height: 16px;
-    left: 90%;
-    animation-delay: 5s;
-    animation-duration: 13s;
-}
-
-.particle:nth-child(10) {
-    width: 24px;
-    height: 24px;
-    left: 15%;
-    animation-delay: 7s;
-    animation-duration: 21s;
+    animation: float-up 18s infinite linear;
+    opacity: 0;
+    background: rgba(232, 73, 29, 0.3); 
+    box-shadow: 0 0 10px rgba(232, 73, 29, 0.2);
 }
 
 @keyframes float-up {
     0% {
-        transform: translateY(100vh) translateX(0px) rotate(0deg);
+        transform: translateY(100vh) translateX(0) rotate(0deg);
         opacity: 0;
     }
     10% {
-        opacity: 0.6;
+        opacity: 0.7;
     }
     90% {
-        opacity: 0.6;
+        opacity: 0.7;
     }
     100% {
-        transform: translateY(-100px) translateX(50px) rotate(360deg);
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
         opacity: 0;
     }
 }
+
+.particle:nth-child(odd) {
+    background: rgba(255, 179, 123, 0.3);
+    box-shadow: 0 0 12px rgba(255, 179, 123, 0.2);
+}
+
+.particle:nth-child(1) { width: 25px; height: 25px; left: 10%; animation-delay: 0s; animation-duration: 20s; }
+.particle:nth-child(2) { width: 15px; height: 15px; left: 20%; animation-delay: 2s; animation-duration: 18s; }
+.particle:nth-child(3) { width: 18px; height: 18px; left: 30%; animation-delay: 4s; animation-duration: 23s; }
+.particle:nth-child(4) { width: 12px; height: 12px; left: 40%; animation-delay: 6s; animation-duration: 15s; }
+.particle:nth-child(5) { width: 22px; height: 22px; left: 50%; animation-delay: 8s; animation-duration: 19s; }
+.particle:nth-child(6) { width: 14px; height: 14px; left: 60%; animation-delay: 10s; animation-duration: 22s; }
+.particle:nth-child(7) { width: 20px; height: 20px; left: 70%; animation-delay: 1s; animation-duration: 17s; }
+.particle:nth-child(8) { width: 16px; height: 16px; left: 80%; animation-delay: 3s; animation-duration: 25s; }
+.particle:nth-child(9) { width: 24px; height: 24px; left: 90%; animation-delay: 5s; animation-duration: 21s; }
+.particle:nth-child(10) { width: 28px; height: 28px; left: 15%; animation-delay: 7s; animation-duration: 24s; }
 
 /* Make sure particles show in dark mode too */
 .dark .particle:nth-child(odd) {
@@ -282,7 +275,7 @@
 #about { scroll-margin-top: 0px; }
 #login { scroll-margin-top: 170px; }
 #resume, #certification  { scroll-margin-top: 50px; }
-#projects { scroll-margin-top: 73px; }
+#projects { scroll-margin-top: 70px; }
 #contact { scroll-margin-top: 120px; }
 
 /* Smooth scrolling */

@@ -87,6 +87,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize project galleries
     initProjectGalleries();
+    
+    // Initialize scroll animations
+    initScrollAnimations();
+    
+    // Initialize enhanced project cards
+    initEnhancedProjectCards();
 });
 
 // Project gallery functionality
@@ -123,6 +129,61 @@ function initProjectGalleries() {
                 images[1].style.opacity = '0';
                 images[1].style.zIndex = '1';
             }
+        });
+    });
+}
+
+// Scroll animations functionality
+function initScrollAnimations() {
+    // Elements to observe
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    // Create intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                // Optionally unobserve after animation
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15, // Trigger when 15% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Triggers slightly before the element enters the viewport
+    });
+    
+    // Observe all elements with the animate-on-scroll class
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Enhanced project card interactions
+function initEnhancedProjectCards() {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        // 3D hover effect
+        card.addEventListener('mousemove', function(e) {
+            if (window.innerWidth <= 768) return;
+            
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top;  // y position within the element
+            
+            // Calculate rotation based on mouse position
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateY = (x - centerX) / 15;
+            const rotateX = (centerY - y) / 15;
+            
+            // Apply the transformation
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        
+        // Reset on mouse leave
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
     });
 }
