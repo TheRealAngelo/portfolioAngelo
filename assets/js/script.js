@@ -93,6 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize enhanced project cards
     initEnhancedProjectCards();
+    
+    // Initialize dark mode
+    initDarkMode();
 });
 
 // Project gallery functionality
@@ -185,5 +188,61 @@ function initEnhancedProjectCards() {
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
+    });
+}
+
+// Dark Mode functionality
+function initDarkMode() {
+    const toggleBtn = document.getElementById('toggle-mode');
+    const toggleMobileBtn = document.getElementById('toggle-mode-mobile');
+    const htmlEl = document.documentElement;
+    
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Apply theme based on saved preference or system preference
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        htmlEl.classList.add('dark');
+    }
+    
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+        htmlEl.classList.toggle('dark');
+        
+        // Save preference to localStorage
+        if (htmlEl.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+        
+        // Update images based on dark mode
+        updateImagesForDarkMode();
+    }
+    
+    // Add click event listeners
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleDarkMode);
+    if (toggleMobileBtn) toggleMobileBtn.addEventListener('click', toggleDarkMode);
+}
+
+// Function to switch between light and dark mode images
+function updateImagesForDarkMode() {
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    
+    // List of images to swap based on dark mode
+    const imagesToSwap = document.querySelectorAll('[data-dark-src]');
+    
+    imagesToSwap.forEach(img => {
+        if (isDarkMode) {
+            const darkSrc = img.getAttribute('data-dark-src');
+            img.setAttribute('data-light-src', img.src);
+            img.src = darkSrc;
+        } else {
+            const lightSrc = img.getAttribute('data-light-src');
+            if (lightSrc) {
+                img.src = lightSrc;
+            }
+        }
     });
 }
