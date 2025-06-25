@@ -552,16 +552,20 @@ html {
     height: 16px;
     z-index: 2;
     transition: opacity 0.3s ease;
+    stroke-width: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .sun-icon {
-    right: 6px;
     opacity: 1;
+    stroke: #f59e0b;
 }
 
 .moon-icon {
-    left: 6px;
     opacity: 0;
+    stroke: #f3f4f6;
 }
 
 .dark .sun-icon {
@@ -679,17 +683,15 @@ html {
 .gallery-dot {
     width: 8px;
     height: 8px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    margin: 0 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .gallery-dot.active {
-    width: 16px;
+    width: 24px;
     background-color: #ffffff;
-    border-radius: 4px;
 }
 
 /* Update the sticky navigation button styles */
@@ -743,20 +745,28 @@ html {
 
 /* Ensure smooth transitions for dark mode changes */
 :root {
+    --background: #ffffff;
+    --text-main: #1f2937;
+    --text-secondary: #6b7280;
+    --accent: #e8491d;
+    --card-bg: #ffffff;
+    --card-border: #f3f4f6;
     --transition-time: 0.3s;
 }
 
-html {
-    transition: background-color var(--transition-time) ease,
-                color var(--transition-time) ease;
-}
-
 html.dark {
-    color-scheme: dark;
+    --background: #1f2937;
+    --text-main: #f9fafb;
+    --text-secondary: #d1d5db;
+    --card-bg: #374151;
+    --card-border: #4b5563;
 }
 
 body {
-    transition: background-color var(--transition-time) ease;
+    background-color: var(--background);
+    color: var(--text-main);
+    transition: background-color var(--transition-time) ease, 
+                color var(--transition-time) ease;
 }
 
 /* Add these modern styling enhancements */
@@ -1044,4 +1054,273 @@ a:focus, button:focus, input:focus, textarea:focus {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark mode toggle styling */
+#toggle-mode, #toggle-mode-mobile {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#toggle-circle, #toggle-circle-mobile {
+    transition: all 0.3s ease;
+}
+
+html.dark #toggle-mode, html.dark #toggle-mode-mobile {
+    background: #374151;
+}
+
+html.dark #toggle-circle, html.dark #toggle-circle-mobile {
+    transform: translateX(24px);
+    background: #1f2937;
+}
+
+.sun-icon, .moon-icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    transition: opacity 0.3s ease;
+    stroke-width: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sun-icon {
+    opacity: 1;
+    stroke: #f59e0b;
+}
+
+.moon-icon {
+    opacity: 0;
+    stroke: #f3f4f6;
+}
+
+html.dark .sun-icon {
+    opacity: 0;
+}
+
+html.dark .moon-icon {
+    opacity: 1;
+}
+
+/* Style key components with dark mode variables */
+.tech-badge {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    transition: all var(--transition-time) ease;
+}
+
+.dark .tech-badge img {
+    filter: brightness(0.8) contrast(1.2);
+}
+
+/* Dark mode for navbar */
+.dark .backdrop-blur-md.bg-white\/90 {
+    background-color: rgba(31, 41, 55, 0.9) !important;
+}
+
+.dark #navbar .text-gray-700 {
+    color: #e5e7eb;
+}
+
+.dark #navbar .text-gray-800 {
+    color: #f9fafb;
+}
+
+/* Improve project card dark mode */
+.dark .group.bg-white {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+.dark .text-gray-800 {
+    color: var(--text-main);
+}
+
+.dark .text-gray-600, 
+.dark .text-gray-700, 
+.dark .text-gray-500 {
+    color: var(--text-secondary);
+}
+
+/* Dark mode for code sections */
+.dark .bg-gray-900 {
+    background-color: #111827;
+}
+
+.dark .bg-white {
+    background-color: var(--card-bg);
+}
+
+/* Dark mode for particles */
+.dark .particle {
+    background: rgba(255, 179, 123, 0.2);
+    box-shadow: 0 0 10px rgba(255, 179, 123, 0.1);
+}
+
+.dark .particle:nth-child(odd) {
+    background: rgba(232, 73, 29, 0.2);
+    box-shadow: 0 0 8px rgba(232, 73, 29, 0.1);
+}
+
+/* Dark mode for tech badges on hover */
+.dark .tech-badge:hover {
+    background-color: #4B5563;
+    border-color: #6B7280;
+}
+
+/* Dark mode for links */
+.dark a:not(.btn):hover {
+    color: var(--accent);
+}
+
+/* Dark mode for buttons */
+.dark .bg-white.text-gray-800 {
+    background-color: #374151;
+    color: #f3f4f6;
+    border-color: #4b5563;
+}
+
+.dark .bg-white.text-gray-800:hover {
+    background-color: #4b5563;
+}
+
+/* Dark mode project tags */
+.dark .px-3.py-1.bg-gray-100 {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #d1d5db;
+}
+
+/* Add these styles to your style.css file */
+
+/* Fix for About Me text in dark mode */
+.dark #about .text-gray-600,
+.dark #about .text-gray-700,
+.dark #about p {
+    color: #d1d5db !important; /* Light gray color that's visible on dark backgrounds */
+}
+
+/* Fix for specific light-colored highlight tags */
+.dark #about .backend-development,
+.dark #about .it-operations,
+.dark #about .highlight-tag {
+    background-color: rgba(232, 73, 29, 0.3);
+    color: #f3f4f6;
+    border: 1px solid rgba(232, 73, 29, 0.4);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Make headings more visible in dark mode */
+.dark #about h1,
+.dark #about h2,
+.dark #about h3,
+.dark #about h4,
+.dark #about .text-gray-800 {
+    color: #f9fafb !important;
+}
+
+/* Fix tech stack background in dark mode */
+.dark #about .tech-badge {
+    background-color: #374151;
+    border-color: #4b5563;
+}
+
+/* Make the main section background darker */
+.dark #about {
+    background: linear-gradient(to bottom, #111827, #1f2937);
+}
+
+/* Dark mode styling for Projects section */
+
+/* Fix project section background in dark mode */
+.dark #projects {
+    background: linear-gradient(to bottom, #1a2030, #111827);
+}
+
+/* Fix project headings in dark mode */
+.dark #projects h1,
+.dark #projects h2, 
+.dark #projects .text-gray-900 {
+    color: #f9fafb !important;
+}
+
+/* Fix project cards in dark mode */
+.dark #projects .group.bg-white {
+    background-color: #2a3441;
+    border-color: #4b5563;
+}
+
+/* Fix project description text in dark mode */
+.dark #projects .text-gray-600,
+.dark #projects p.text-primary {
+    color: #d1d5db !important;
+}
+
+/* Fix project list items in dark mode */
+.dark #projects ul li {
+    color: #d1d5db;
+}
+
+/* Fix tech badge styles in projects */
+.dark #projects .px-3.py-1.bg-gray-100 {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #d1d5db;
+}
+
+/* Improve GitHub button hover state in dark mode */
+.dark #projects a.bg-gray-800:hover {
+    background-color: var(--primary) !important;
+}
+
+/* Fix corner accent in dark mode */
+.dark #projects .absolute.top-0.right-0.w-16.h-16.bg-gradient-to-b {
+    opacity: 0.5;
+}
+
+/* Fix shadow effects in dark mode */
+.dark #projects .hover\:shadow-xl:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Fix GitHub section in header */
+.dark #projects .p-2.rounded-full.bg-white {
+    background-color: #2a3441;
+}
+
+/* Fix header accents and dividers */
+.dark #projects .bg-gradient-to-r.from-gray-200,
+.dark #projects .bg-gradient-to-r.from-gray-300,
+.dark #projects .h-0\.5.w-16.bg-gradient-to-r {
+    opacity: 0.5;
+}
+
+/* Fix mobile menu in dark mode */
+.dark #nav-mobile-menu {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+.dark #nav-mobile-menu a {
+    color: #2b2c2c;
+}
+
+.dark #nav-mobile-menu a:hover {
+    background-color: #374151;
+    color: var(--primary-light);
+}
+
+/* Fix hamburger button in dark mode */
+.dark #nav-hamburger span {
+    background-color: #374151;
+}
+
+/* Fix toggle mode button in mobile menu */
+.dark #toggle-mode-mobile {
+    border: 1px solid #4b5563;
 }
