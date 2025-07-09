@@ -96,7 +96,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize dark mode
     initDarkMode();
+    
+    // Prevent horizontal scrolling
+    preventHorizontalScroll();
 });
+
+// Prevent horizontal scrolling
+function preventHorizontalScroll() {
+    // Prevent horizontal scroll with mouse wheel
+    document.addEventListener('wheel', function(e) {
+        if (e.shiftKey || e.deltaX !== 0) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    // Prevent horizontal scroll with arrow keys
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            e.preventDefault();
+        }
+    });
+
+    // Force body to never allow horizontal overflow
+    document.body.style.overflowX = 'hidden';
+    document.documentElement.style.overflowX = 'hidden';
+    
+    // Monitor for any elements that might cause horizontal overflow
+    const observer = new ResizeObserver(() => {
+        document.body.style.overflowX = 'hidden';
+        document.documentElement.style.overflowX = 'hidden';
+    });
+    
+    observer.observe(document.body);
+}
 
 // Project gallery functionality
 function initProjectGalleries() {
